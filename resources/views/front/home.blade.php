@@ -10,8 +10,8 @@
                     <div class="container">
                         <div class="row align-items-center justify-content-center justify-content-lg-start">
                             <div class="col-10 col-lg-7 text-center text-lg-start">
-                                <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Car Servicing //</h6>
-                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Qualified Car Wash Service Center</h1>
+                                <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Washing Car  //</h6>
+                                <h1 class="display-3 text-white mb-3 pb-2 animated slideInDown" style="font-size: 3rem">Anda Sibuk? Mau cuci mobil tanpa antri? Cobain disini auto bersih dan mengkilap</h1>
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                             <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
@@ -38,7 +38,6 @@
                     <div class="ps-4">
                         <h5 class="mb-3">Quality Servicing</h5>
                         <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
                     </div>
                 </div>
             </div>
@@ -46,9 +45,8 @@
                 <div class="d-flex bg-light py-5 px-4">
                     <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
-                        <h5 class="mb-3">Expert Workers</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <h5 class="mb-3">Aplikasi mudah di akses</h5>
+                        <p>Memudahkan para user yang ingin menggunakan aplikasi dan pelayanannya ramah</p>
                     </div>
                 </div>
             </div>
@@ -56,9 +54,8 @@
                 <div class="d-flex py-5 px-4">
                     <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
-                        <h5 class="mb-3">Modern Equipment</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <h5 class="mb-3">Teknik yang Efisien</h5>
+                        <p>pembersihan yang efisien untuk menghemat waktu Anda, namun tetap memberikan hasil yang berkualitas.</p>
                     </div>
                 </div>
             </div>
