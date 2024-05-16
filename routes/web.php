@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('front.home');
@@ -31,7 +32,13 @@ Route::get('/navigation', function () {
     return view('/admin/navigation');
 });
 
+Route::prefix('admin')->group(function(){
 
+
+    Route::resource('layanan', LayananController::class);
+    Route::resource('transaksi', TransaksiController::class);
+
+});
 
 
 
