@@ -11,7 +11,7 @@
                         <div class="row align-items-center justify-content-center justify-content-lg-start">
                             <div class="col-10 col-lg-7 text-center text-lg-start">
                                 <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Washing Car  //</h6>
-                                <h1 class="display-3 text-white mb-3 pb-2 animated slideInDown" style="font-size: 3rem">Anda Sibuk? Mau cuci mobil tanpa antri? Cobain disini auto bersih dan mengkilap</h1>
+                                <h1 class="display-3 text-white mb-3 pb-2 animated slideInDown" style="font-size: 3rem">Anda sibuk? Mau cuci mobil tanpa antri? Cobain nih disini auto bersih dan mengkilap</h1>
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                             <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
@@ -30,6 +30,7 @@
 
 <!-- Service Start -->
 <div class="container-xxl py-5">
+    <h1 align="center">kenapa harus steam di kami?</h1>
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
