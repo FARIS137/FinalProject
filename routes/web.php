@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\TransaksiController;
 
 
 
@@ -34,17 +35,10 @@ Route::get('/navigation', function () {
 });
 
 Route::prefix('admin')->group(function(){
-    // route memanggil controller setiap fungsi,
-    // (nanti linknya menggunakn url, ada didalam view)
 
 
-// route dengan pemanggilan class
-// Route::get('/jenis_produk', [JenisProdukController::class, 'index']);
-// Route::post('/jenis_produk/store', [JenisProdukController::class, 'store']);
-// Route::resource('produk', ProdukController::class);
-// Route::resource('pelanggan', PelangganController::class);
-// Route::get('/kartu', [KartuController::class, 'index']);
 Route::resource('layanan', LayananController::class);
+Route::resource('transaksi', TransaksiController::class);
 
 });
 
