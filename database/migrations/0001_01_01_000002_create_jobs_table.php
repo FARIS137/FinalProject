@@ -34,14 +34,22 @@ return new class extends Migration
             $table->integer('finished_at')->nullable();
         });
 
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('layanan', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('jenis_layanan');
+            $table->integer('harga');
+            $table->text('deskripsi');
+            $table->timestamp('created_at');
+        });
+
+        Schema::create('transaksi', function (Blueprint $table) {
+            $table->id('id')->primary();
+            $table->date('tanggal_transaksi');
+            $table->char('metode_pembayaran', 255);
+            $table->char('bukti_bayar', 255);
+            $table->integer('total_biaya');
+            $table->integer('pemesanan_id');
+            $table->timestamp('created_at');
         });
     }
 
@@ -53,5 +61,6 @@ return new class extends Migration
         Schema::dropIfExists('jobs');
         Schema::dropIfExists('job_batches');
         Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('layanan');
     }
 };

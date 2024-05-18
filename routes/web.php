@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,10 +33,9 @@ Route::get('/navigation', function () {
     return view('/admin/navigation');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::resource('layanan', LayananController::class);
+    Route::resource('transaksi', TransaksiController::class);
 
-
-
-
-
-
-
+    Route::post('layanan/store', [LayananController::class, 'store']);
+});
