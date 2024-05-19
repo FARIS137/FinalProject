@@ -34,7 +34,7 @@
                         <div class="row g-4">
                             <div class="col-md-6" style="min-height: 350px;">
                                 <div class="position-relative h-100">
-                                    <img class="position-absolute img-fluid w-100 h-100" src="{{asset('front')}}/assets/img/service-1.jpg"
+                                    <img class="position-absolute img-fluid w-100 h-100" src="{{asset('front')}}/assets/img/carousel-bg-2.jpg"
                                         style="object-fit: cover;" alt="">
                                 </div>
                             </div>

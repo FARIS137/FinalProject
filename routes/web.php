@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\UsersController;
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
     return view('front.home');
@@ -22,26 +29,25 @@ Route::get('/service', function () {
 
 Route::get('/contact', function () {
     return view('/front/contact');
-});
 
+
+});
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
-
-Route::get('/navigation', function () {
-    return view('/admin/navigation');
-});
-
 Route::prefix('admin')->group(function(){
 
 
     Route::resource('layanan', LayananController::class);
     Route::resource('transaksi', TransaksiController::class);
+    Route::resource('pemesanan', PemesananController::class);
+    Route::resource('users', UsersController::class);
 
-});
+    Route::post('/layanan/store',[LayananController::class, 'store']);
+    Route::post('/pemesanan/store',[PemesananController::class, 'store']);
 
 
+    });
 
 
-
-
+?>

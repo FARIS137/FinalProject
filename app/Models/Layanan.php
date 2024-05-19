@@ -13,6 +13,8 @@ class layanan extends Model
 
     protected $fillable = ['jenis_layanan', 'harga', 'deskripsi'];
 
+    public $timestamps = false;
+
     public function pemesanan (){
         return $this->belongsTo(Pemesanan::class);
     }
