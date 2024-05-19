@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.

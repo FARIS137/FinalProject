@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Pemesanan;
 use App\Models\Layanan;
 
 
-use Illuminate\Http\Request;
-
-class LayananController extends Controller
+class PemesananController extends Controller
 {
     //
     public function index()
     {
         //
-        $layanan = Layanan::all();
-        return view('admin.layanan.index', compact('layanan'));
+        $pemesanan = Pemesanan::all();
+        return view('admin.pemesanan.index', compact('pemesanan'));
     }
 
     /**
@@ -23,6 +23,8 @@ class LayananController extends Controller
     public function create()
     {
         //
+        $layanan = Layanan::all();
+        return view('admin.pemesanan.create', compact('layanan'));
     }
 
     /**
@@ -31,13 +33,15 @@ class LayananController extends Controller
     public function store(Request $request)
     {
         //
-        $layanan = new layanan;
-        $layanan->jenis_layanan = $request->jenis_layanan;
-        $layanan->harga = $request->harga;
-        $layanan->deskripsi = $request->deskripsi;
-        $layanan->save();
-        return redirect('admin/layanan');
-
+        $pemesanan = new Pemesanan;
+        $pemesanan->tanggal_awal_booking = $request->tanggal_awal_booking;
+        $pemesanan->jam_awal_booking = $request->jam_awal_booking;
+        $pemesanan->catatan = $request->catatan;
+        $pemesanan->noplat_mobil = $request->noplat_mobil;
+        $pemesanan->customer_name = $request->customer_name;
+        $pemesanan->layanan_id = $request->layanan_id;
+        $pemesanan->save();
+        return redirect('admin/pemesanan');
     }
 
     /**

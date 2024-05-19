@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Layanan;
-
-
 use Illuminate\Http\Request;
+use App\Models\Users;
 
-class LayananController extends Controller
+
+class UsersController extends Controller
 {
     //
     public function index()
     {
         //
-        $layanan = Layanan::all();
-        return view('admin.layanan.index', compact('layanan'));
+        $users = Users::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -23,6 +22,8 @@ class LayananController extends Controller
     public function create()
     {
         //
+        $users = Users::all()->unique('hak_akses');
+        return view('admin.users.create', compact('users'));
     }
 
     /**
@@ -31,13 +32,13 @@ class LayananController extends Controller
     public function store(Request $request)
     {
         //
-        $layanan = new layanan;
-        $layanan->jenis_layanan = $request->jenis_layanan;
-        $layanan->harga = $request->harga;
-        $layanan->deskripsi = $request->deskripsi;
-        $layanan->save();
-        return redirect('admin/layanan');
-
+        $users = new Users;
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->email = $request->email;
+        $users->hak_akses = $request->hak_akses;
+        $users->save();
+        return redirect('admin/users');
     }
 
     /**

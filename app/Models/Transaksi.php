@@ -9,7 +9,6 @@ class Transaksi extends Model
 {
     use HasFactory;
     protected $table = 'transaksi';
-
     protected $fillable = ['tanggal_transaksi', 'metode_pembayaran', 'bukti_bayar' ,'total_biaya', 'pemesanan_id'];
 
     public function pemesanan (){

@@ -2,7 +2,7 @@
 @section('konten')
 
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Transaksi</h1>
+                        <h1 class="mt-4">Users</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -16,7 +16,7 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a href="{{route('transaksi.create')}}" 
+                                <a href="{{route('users.create')}}" 
                             class="btn btn-md btn-primary" >
                                 <i class="fa-solid fa-square-plus">
                                 </i></a>
@@ -26,28 +26,28 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                            <th>Tanggal Transaksi</th>
-                                            <th>Metode Pembayaran</th>
-                                            <th>Bukti Bayar</th>
-                                            <th>Total Biaya</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Hak Akses</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                             <th>No</th>
-                                            <th>Tanggal Transaksi</th>
-                                            <th>Metode Pembayaran</th>
-                                            <th>Bukti Bayar</th>
-                                            <th>Total Biaya</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Hak Akses</th>
                                     </tfoot>
                                     <tbody>
                                         
-                                        @foreach($transaksi as $t)
+                                        @foreach($users as $u)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$t->tanggal_transaksi}}</td>
-                                            <td>{{$t->metode_pembayaran}}</td>
-                                            <td>{{$t->bukti_bayar}}</td>
-                                            <td>{{$t->total_biaya}}</td>
+                                            <td>{{$u->username}}</td>
+                                            <td>{{$u->password}}</td>
+                                            <td>{{$u->email}}</td>
+                                            <td>{{$u->hak_akses}}</td>
                                             
                                         </tr>
                                         @endforeach

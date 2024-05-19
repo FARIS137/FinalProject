@@ -1,6 +1,44 @@
 @extends('admin.layouts.app')
 @section('konten')
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jenis Layanan</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{{url('admin/layanan/store')}}" 
+          method="POST" enctype="multipart/form-data" >
+              @csrf
+            <div class="mb-3">
+          <input type="text" class="form-control" name="jenis_layanan"
+           id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Tambah Layanan">
+            </div>
+
+            <div class="mb-3">
+          <input type="text" class="form-control" name="harga"
+           id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Tambah Harga">
+            </div>
+
+            <div class="mb-3">
+          <input type="text" class="form-control" name="deskripsi"
+           id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Tambah Deskripsi">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="container-fluid px-4">
                         <h1 class="mt-4">Layanan</h1>
                         <ol class="breadcrumb mb-4">
@@ -16,22 +54,25 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                <a href="" class="btn btn-md btn-primary" 
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-square-plus">
+
+                                </i></a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                            <th>Jenis_Layanan</th>
+                                            <th>Jenis Layanan</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                             <th>No</th>
-                                            <th>Jenis_Layanan</th>
+                                            <th>Jenis Layanan</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
                                     </tfoot>

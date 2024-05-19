@@ -30,6 +30,13 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         //
+        $transaksi = new transaksi;
+        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+        $transaksi->metode_pembayarab = $request->metode_pembayarab;
+        $transaksi->bukti_bayar = $request->bukti_bayar;
+        $transaksi->total_biaya = $request->total_biayai;
+        $transaksi->save();
+        return redirect('admin/layanan');
     }
 
     /**
