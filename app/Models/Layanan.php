@@ -12,6 +12,8 @@ class layanan extends Model
     protected $table = 'layanan';
 
     protected $fillable = ['jenis_layanan', 'harga', 'deskripsi'];
+    
+    public $timestamps = false;
 
     public function pemesanan (){
         return $this->belongsTo(Pemesanan::class);

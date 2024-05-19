@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\UsersController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -37,38 +40,15 @@ Route::prefix('admin')->group(function(){
 
     Route::resource('layanan', LayananController::class);
     Route::resource('transaksi', TransaksiController::class);
+    Route::resource('pemesanan', PemesananController::class);
+    Route::resource('users', UsersController::class);
+    
+    Route::post('/layanan/store',[LayananController::class, 'store']);
+    Route::post('/pemesanan/store',[PemesananController::class, 'store']);
+
     
     });
 
-
-// //contoh routing untk mengarahkan ke view, tnpa melakukan controller
-// Route::get('/percobaan_pertama', function () {
-//     return view('helo');
-// });
-
-// //contoh routing yang mengarahkan dirinya sendiri tanpa view dan controller
-// Route::get('/salam', function () {
-//     return "<h1>Selamat pagi peserta MSIB </h1>";
-// });
-
-// //contoh routing yang menggunakan paremeter (variabel sementara)
-// Route::get('/staff/{nama}/{devisi}', function ($nama, $devisi) {
-//     return 'nama pegawai ' . $nama . '<br> Departemen: ' . $devisi;
-// });
-
-// Route::get('/daftar_nilai', function () {
-//     //return view yang mengarahkan  kedalam view yg didalamnya ada folder nilai dan daftar_nilai
-//     return view('nilai.daftar_nilai');
-// });
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// });
-// Route::get('/blog', function () {
-//     return view('blog');
-// });
-// Route::get('/contact', function () {
-//     return view('contact', ['nama' => 'azrul4096@gmail.com']);
-// });
 
 ?>
 

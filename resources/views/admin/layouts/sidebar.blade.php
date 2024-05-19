@@ -18,6 +18,8 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{route('layanan.index')}}">Layanan </a>
                             <a class="nav-link" href="{{route('transaksi.index')}}">Transaksi </a>
+                            <a class="nav-link" href="{{route('pemesanan.index')}}">Pemesanan </a>
+                            <a class="nav-link" href="{{route('users.index')}}">Users </a>
                             
                         </nav>
                     </div>
