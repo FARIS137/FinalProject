@@ -27,6 +27,20 @@
     </div>
   </div>
   <div class="form-group row">
+    <label for="text2" class="col-4 col-form-label">Jenis Mobil</label> 
+    <div class="col-8">
+        @foreach ($jenis_mobil as $jm)
+        @php 
+        $cek = (old('jm') == $jm) ? 'checked': ''; @endphp
+    <div class="custom-control custom-radio custom-control-inline">
+        <input name="jenis_mobil" id="radio_0{{$jm}}" type="radio" 
+        class="custom-control-input" value="{{$jm}}" {{$cek}}> 
+        <label for="radio_0{{$jm}}" class="custom-control-label">{{$jm}}</label>
+      </div>
+      @endforeach
+    </div>
+  </div>
+  <div class="form-group row">
     <label for="text4" class="col-4 col-form-label">Catatan</label> 
     <div class="col-8">
       <input id="text4" name="catatan" type="text" class="form-control">
