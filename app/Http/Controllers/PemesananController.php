@@ -52,6 +52,8 @@ class PemesananController extends Controller
     public function show(string $id)
     {
         //
+        $pemesanan = Pemesanan::find($id);
+        return view('admin.pemesanan.detail', compact('pemesanan'));
     }
 
     /**
