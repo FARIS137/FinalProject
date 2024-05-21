@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function(){
     
     Route::post('/layanan/store',[LayananController::class, 'store']);
     Route::post('/pemesanan/store',[PemesananController::class, 'store']);
+    Route::post('/users/store', [UsersController::class, 'store']);
 
     
     });

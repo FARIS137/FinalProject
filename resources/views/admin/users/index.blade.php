@@ -16,8 +16,10 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                <a href="{{route('users.create')}}" 
+                            class="btn btn-md btn-primary" >
+                                <i class="fa-solid fa-square-plus">
+                                </i></a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -31,7 +33,7 @@
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                    <th>No</th>
+                                            <th>No</th>
                                             <th>Username</th>
                                             <th>Password</th>
                                             <th>Email</th>

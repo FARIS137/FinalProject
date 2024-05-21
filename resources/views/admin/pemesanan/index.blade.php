@@ -32,6 +32,7 @@
                                             <th>Jenis Mobil</th>
                                             <th>No Plat Mobil</th>
                                             <th>Layanan</th>
+                                            <th>Action</th>
                                            
                                         </tr>
                                     </thead>
@@ -43,6 +44,7 @@
                                             <th>Jenis Mobil</th>
                                             <th>No Plat Mobil</th>
                                             <th>Layanan</th>
+                                            <th>Action</th>
                                             
                                     </tfoot>
                                     <tbody>
@@ -56,6 +58,12 @@
                                             <td>{{$p->jenis_mobil}}</td>
                                             <td>{{$p->noplat_mobil}}</td>
                                             <td>{{$p->layanan_id}}</td>
+                                            <td>
+                            <a href="{{ route('pemesanan.show', $p->id) }}" 
+                                class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                        </td>
                                             
                                         </tr>
                                         @endforeach

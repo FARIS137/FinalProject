@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 
+
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //
     public function index()
     {
         //
@@ -23,6 +22,8 @@ class UsersController extends Controller
     public function create()
     {
         //
+        $users = Users::all()->unique('hak_akses');
+        return view('admin.users.create', compact('users'));
     }
 
     /**
@@ -31,6 +32,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $users = new Users;
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->email = $request->email;
+        $users->hak_akses = $request->hak_akses;
+        $users->save();
+        return redirect('admin/users');
     }
 
     /**

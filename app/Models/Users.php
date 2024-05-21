@@ -10,7 +10,8 @@ class Users extends Model
     use HasFactory;
     protected $table = 'users';
 
-    protected $fillable = ['username', 'password', 'email', 'hak_akses'];
+    protected $fillable = ['username', 'password', 'email' ,'hak_akses'];
+    public $timestamps = false;
 
     public function pemesanan (){
         return $this->haveMany(Pemesanan::class);
