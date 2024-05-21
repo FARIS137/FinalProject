@@ -21,7 +21,7 @@
                 <p><b>Jenis Mobil: </b> {{ $pemesanan->jenis_mobil }}</p>
                 <p><b>NoPlat Mobil: </b> {{ $pemesanan->noplat_mobil }}</p>
                 <p ><b>Nama Pelanggan:</b> {{ $pemesanan->customer_name }}</p>
-                <p ><b>Layanan:</b> {{ $pemesanan->layanan_id }}</p>
+                <p ><b>Layanan:</b> {{ $pemesanan->layanan->jenis_layanan }}</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">

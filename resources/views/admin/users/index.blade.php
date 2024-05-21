@@ -30,6 +30,7 @@
                                             <th>Password</th>
                                             <th>Email</th>
                                             <th>Hak Akses</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -38,6 +39,7 @@
                                             <th>Password</th>
                                             <th>Email</th>
                                             <th>Hak Akses</th>
+                                            <th>Action</th>
                                     </tfoot>
                                     <tbody>
                                         
@@ -48,7 +50,13 @@
                                             <td>{{$u->password}}</td>
                                             <td>{{$u->email}}</td>
                                             <td>{{$u->hak_akses}}</td>
-                                            
+                                            <td>
+                                                <a href="{{route('users.show', $u->id)}}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-eye"></i></a>
+                                                <a href="{{route('users.edit', $u->id)}}"
+                                                    class="btn btn-sm btn-warning">Edit</a>  
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

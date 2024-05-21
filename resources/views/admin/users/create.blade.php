@@ -7,7 +7,6 @@
 <form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
     @csrf
 
-<form>
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Username</label> 
     <div class="col-8">
@@ -26,16 +25,17 @@
       <input id="text3" name="email" type="email" class="form-control">
     </div>
   </div>
+  <div class="form-group row">
+    <label for="text5" class="col-4 col-form-label">Foto</label> 
+    <div class="col-8">
+      <input id="text5" name="foto" type="file" class="form-control">
+    </div>
+  </div>
 
   <div class="form-group row">
     <label for="select" class="col-4 col-form-label">Pilihan Hak akses</label> 
     <div class="col-8">
-      <select id="select" name="hak_akses" class="custom-select">
-        @foreach($users as $user)
-        <option value="{{$user->hak_akses}}">{{$user->hak_akses}}</option>
-
-       @endforeach  
-      </select>
+      <input id="text3" name="hak_akses" type="text" class="form-control">
     </div>
   </div> 
   <div class="form-group row">
@@ -43,6 +43,5 @@
       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
-</form>
 </form>
 @endsection
