@@ -33,6 +33,17 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
         //
+        //proses upload foto
+        //jika file foto ada yg terupload 
+        if (!empty($request->foto)) {
+            //maka proses ini akan dijalankan
+            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
+            //setelah fotonya telah masuk maka tempatkan ke publik
+            $request->foto->move(public_path('admin/image'), $fileName);
+        } else {
+            $fileName = '';
+        }
+
         $pemesanan = new Pemesanan;
         $pemesanan->tanggal_awal_booking = $request->tanggal_awal_booking;
         $pemesanan->jam_awal_booking = $request->jam_awal_booking;
@@ -60,6 +71,10 @@ class PemesananController extends Controller
     public function edit(string $id)
     {
         //
+        $jenis = Pemesanan::find($id);
+        $jm = Pemesanan::all('jenis_mobil');
+        $jenis_mobil = ['biasa', 'sport'];
+        return view('admin.pemesanan.edit', compact('jenis', 'jm', 'jenis_mobil'));
     }
 
     /**
@@ -68,6 +83,32 @@ class PemesananController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        //foto lama 
+        $fotoLama = Pemesanan::select('foto')->where('id', $id)->get();
+        foreach ($fotoLama as $f1) {
+            $fotoLama = $f1->foto;
+        }
+        //jika foto sudah ada yang terupload 
+        if (!empty($request->foto)) {
+            //maka proses selanjutnya 
+            if (!empty($fotoLama->foto)) unlink(public_path('admin/image' . $fotoLama->foto));
+            //proses ganti foto
+            $fileName = 'foto-' . $request->id . '.' . $request->foto->extension();
+            //setelah tau fotonya sudah masuk maka tempatkan ke public
+            $request->foto->move(public_path('admin/image'), $fileName);
+        } else {
+            $fileName = $fotoLama;
+        }
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan = new Pemesanan;
+        $pemesanan->tanggal_awal_booking = $request->tanggal_awal_booking;
+        $pemesanan->jam_awal_booking = $request->jam_awal_booking;
+        $pemesanan->catatan = $request->catatan;
+        $pemesanan->noplat_mobil = $request->noplat_mobil;
+        $pemesanan->customer_name = $request->customer_name;
+        $pemesanan->layanan_id = $request->layanan_id;
+        $pemesanan->save();
+        return redirect('admin/pemesanan');
     }
 
     /**

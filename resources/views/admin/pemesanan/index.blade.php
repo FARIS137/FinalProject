@@ -63,6 +63,8 @@
                                 class="btn btn-sm btn-success">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
+                            <a href="{{route('pemesanan.edit', $p->id)}}"
+                                class="btn btn-sm btn-warning">Edit</a>  
                         </td>
                     </tr>
                     @endforeach
