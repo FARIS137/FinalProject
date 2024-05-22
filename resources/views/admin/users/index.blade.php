@@ -16,8 +16,10 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                <a href="{{route('users.create')}}"
+                            class="btn btn-md btn-primary" >
+                                <i class="fa-solid fa-square-plus">
+                                </i></a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -28,14 +30,16 @@
                                             <th>Password</th>
                                             <th>Email</th>
                                             <th>Hak Akses</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                    <th>No</th>
+                                            <th>No</th>
                                             <th>Username</th>
                                             <th>Password</th>
                                             <th>Email</th>
                                             <th>Hak Akses</th>
+                                            <th>Action</th>
                                     </tfoot>
                                     <tbody>
 
@@ -46,7 +50,13 @@
                                             <td>{{$u->password}}</td>
                                             <td>{{$u->email}}</td>
                                             <td>{{$u->hak_akses}}</td>
-
+                                            <td>
+                                                <a href="{{route('users.show', $u->id)}}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-eye"></i></a>
+                                                <a href="{{route('users.edit', $u->id)}}"
+                                                    class="btn btn-sm btn-warning">Edit</a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
