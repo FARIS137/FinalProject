@@ -13,6 +13,7 @@ class Transaksi extends Model
     protected $fillable = ['tanggal_transaksi', 'metode_pembayaran', 'bukti_bayar' ,'total_biaya', 'pemesanan_id'];
 
     public function pemesanan (){
-        return $this->haveMany(Pemesanan::class);
+        return $this->belongsTo(Pemesanan::class, 'pemesanan_id');
     }
+
 }

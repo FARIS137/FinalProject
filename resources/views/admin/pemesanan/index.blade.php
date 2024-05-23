@@ -29,7 +29,7 @@
                         <th>Catatan</th>
                         <th>Jenis Mobil</th>
                         <th>NoPlat Mobil</th>
-
+                        <th>Nama Pelanggan</th>
                         <th>Layanan</th>
                         <th>Actions</th>
                     </tr>
@@ -42,7 +42,7 @@
                         <th>Catatan</th>
                         <th>Jenis Mobil</th>
                         <th>NoPlat Mobil</th>
-
+                        <th>Nama Pelanggan</th>
                         <th>Layanan</th>
                         <th>Actions</th>
                     </tr>
@@ -56,7 +56,7 @@
                         <td>{{ $p->catatan }}</td>
                         <td>{{ $p->jenis_mobil }}</td>
                         <td>{{ $p->noplat_mobil }}</td>
-
+                        <td>{{ $p->customer_name }}</td>
                         <td>{{ $p->layanan_id }}</td>
                         <td>
                             <a href="{{ route('pemesanan.show', $p->id) }}"

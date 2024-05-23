@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
-
+use App\Models\layanan;
 
 class TransaksiController extends Controller
 {
@@ -37,7 +37,19 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $transaksi = Transaksi::find($id);
+        $pemesanan = $transaksi->pemesanan;
+
+        // Mengambil data layanan berdasarkan layanan_id dari pemesanan
+        $layanan = Layanan::find($pemesanan->layanan_id);
+        $transaksi->noplat_mobil = $pemesanan->noplat_mobil;
+        if ($layanan) {
+            $transaksi->diskripsi = $layanan->deskripsi;
+        } else {
+            $transaksi->diskripsi = 'Deskripsi layanan tidak ditemukan';
+        }
+
+        return view('admin.transaksi.detail', compact('transaksi'));
     }
 
     /**

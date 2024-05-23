@@ -52,6 +52,12 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label for="text1" class="col-4 col-form-label">Nama Pelanggan</label>
+        <div class="col-8">
+            <input id="text1" name="customer_name" type="text" class="form-control">
+        </div>
+    </div>
 
     <div class="form-group row">
         <label for="select" class="col-4 col-form-label">Layanan</label>

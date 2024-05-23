@@ -106,7 +106,7 @@ class PemesananController extends Controller
          $pemesanan->catatan = $request->catatan;
          $pemesanan->jenis_mobil = $request->jenis_mobil;
          $pemesanan->noplat_mobil = $request->noplat_mobil;
-
+         $pemesanan->customer_name = $request->customer_name;
          $pemesanan->foto = $fileName;
          $pemesanan->layanan_id = $request->layanan_id;
          $pemesanan->save();

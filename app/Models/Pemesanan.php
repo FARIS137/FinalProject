@@ -10,11 +10,11 @@ class Pemesanan extends Model
     use HasFactory;
     protected $table = 'pemesanan';
 
-    protected $fillable = ['tanggal_awal_booking', 'jam_awal_booking', 'catatan', 'jenis_mobil', 'noplat_mobil', 'layanan id'];
+    protected $fillable = ['tanggal_awal_booking', 'jam_awal_booking', 'catatan', 'jenis_mobil', 'noplat_mobil','customer_name', 'layanan id'];
 
     public $timestamps = false;
 
     public function pemesanan (){
-        return $this->belongsTo(Pemesanan::class, 'layanan_id');
+        return $this->belongsTo(Layanan::class, 'layanan_id');
 }
 }

@@ -45,6 +45,8 @@ class LayananController extends Controller
     public function show(string $id)
     {
         //
+        $layanan = layanan::find($id);
+        return view('admin.layanan.detail', compact('layanan'));
     }
 
     /**

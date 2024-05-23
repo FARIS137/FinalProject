@@ -2,7 +2,7 @@
 @section('konten')
 
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Layanan</h1>
+                        <h1 class="mt-4">Transaksi</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -28,6 +28,7 @@
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
                                             <th>Total Biaya</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -36,6 +37,7 @@
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
                                             <th>Total Biaya</th>
+                                            <th>Action</th>
                                     </tfoot>
                                     <tbody>
 
@@ -46,7 +48,12 @@
                                             <td>{{$t->metode_pembayaran}}</td>
                                             <td>{{$t->bukti_bayar}}</td>
                                             <td>{{$t->total_biaya}}</td>
-
+                                            <td>
+                                                <a href="{{ route('transaksi.show', $t->id) }}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

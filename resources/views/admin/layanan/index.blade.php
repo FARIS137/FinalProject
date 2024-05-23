@@ -61,10 +61,11 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                        <th>No</th>
+                                            <th>No</th>
                                             <th>Jenis_Layanan</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -72,6 +73,7 @@
                                             <th>Jenis_Layanan</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
+                                            <th>Action</th>
                                     </tfoot>
                                     <tbody>
 
@@ -81,7 +83,12 @@
                                             <td>{{$l->jenis_layanan}}</td>
                                             <td>{{$l->harga}}</td>
                                             <td>{{$l->deskripsi}}</td>
-
+                                            <td>
+                                                <a href="{{ route('layanan.show', $l->id) }}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
