@@ -2,12 +2,11 @@
 @section('konten')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-
 <style>
     body{
     background:#f5f5f5;
     margin-top:20px;}
-/*------- portfolio -------*/
+/------- portfolio -------/
 .project {
   margin: 15px 0;
 }
@@ -418,7 +417,6 @@ b, strong {
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 <h5>DETAILS PEMESANAN</h5>
-                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
@@ -428,7 +426,7 @@ b, strong {
                 <p><b>Jenis Mobil: </b> {{ $pemesanan->jenis_mobil }}</p>
                 <p><b>NoPlat Mobil: </b> {{ $pemesanan->noplat_mobil }}</p>
                 <p ><b>Nama Pelanggan:</b> {{ $pemesanan->customer_name }}</p>
-                <p ><b>Layanan:</b> {{ $pemesanan->layanan_id }}</p>
+                <p ><b>Layanan:</b> {{ $pemesanan->layanan->jenis_layanan}}</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">

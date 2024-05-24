@@ -75,7 +75,8 @@ class PemesananController extends Controller
 
         $ps = Pemesanan::find($id);
         $jenis_mobil = ['biasa', 'sport'];
-        return view('admin.pemesanan.edit', compact('ps','jenis_mobil'));
+        $layanan = Layanan::all();
+        return view('admin.pemesanan.edit', compact('ps','jenis_mobil','layanan'));
     }
 
     /**
@@ -106,7 +107,6 @@ class PemesananController extends Controller
          $pemesanan->catatan = $request->catatan;
          $pemesanan->jenis_mobil = $request->jenis_mobil;
          $pemesanan->noplat_mobil = $request->noplat_mobil;
-         $pemesanan->customer_name = $request->customer_name;
          $pemesanan->foto = $fileName;
          $pemesanan->layanan_id = $request->layanan_id;
          $pemesanan->save();
@@ -119,5 +119,9 @@ class PemesananController extends Controller
     public function destroy(string $id)
     {
         //
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan->delete();
+
+        return redirect('admin/pemesanan');
     }
 }

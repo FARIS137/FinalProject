@@ -1,183 +1,450 @@
 @extends('admin.layouts.app')
 @section('konten')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <style>
-    body {
-        background: #87CEFA;
-    }
+    body{
+    background:#f5f5f5;
+    margin-top:20px;}
+/------- portfolio -------/
+.project {
+  margin: 15px 0;
+}
 
-    .container-fluid {
-        display: flex;
-        flex-wrap: wrap;
-    }
+.no-gutter .project {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-    .image-container, .transaction-container {
-        flex: 1;
-        margin: 20px;
-    }
+.has-spacer {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
 
-    .image-container img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.has-spacer-extra-space {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
 
-    .transaction-container {
-        max-width: 600px;
-    }
+.has-side-spacer {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 
-    .card-footer-btn {
-        display: flex;
-        align-items: center;
-        border-top-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-    }
+.project-title {
+  font-size: 1.25rem;
+}
 
-    .text-uppercase-bold-sm {
-        text-transform: uppercase !important;
-        font-weight: 500 !important;
-        letter-spacing: 2px !important;
-        font-size: .85rem !important;
-    }
+.project-skill {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.06rem;
+}
 
-    .hover-lift-light {
-        transition: box-shadow .25s ease, transform .25s ease, color .25s ease, background-color .15s ease-in;
-    }
+.project-info-box {
+  margin: 15px 0;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 5px;
+}
 
-    .justify-content-center {
-        justify-content: center !important;
-    }
+.project-info-box p {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d5dadb;
+}
 
-    .btn-group-lg>.btn, .btn-lg {
-        padding: 0.8rem 1.85rem;
-        font-size: 1.1rem;
-        border-radius: 0.3rem;
-    }
+.project-info-box p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    -webkit-backface-visibility: hidden;
+}
+.rounded {
+    border-radius: 5px !important;
+}
+.btn-xs.btn-icon {
+    width: 34px;
+    height: 34px;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    font-size: 10px;
+    line-height: 34px;
+}
+/* facebook button */
+.btn-facebook, .btn-facebook:active, .btn-facebook:focus {
+  color: #fff !important;
+  background: #4e68a1;
+  border: 2px solid #4e68a1;
+}
 
-    .btn-dark {
-        color: #fff;
-        background-color: #1e2e50;
-        border-color: #1e2e50;
-    }
+.btn-facebook:hover {
+  color: #fff !important;
+  background: #3b4f7a;
+  border: 2px solid #3b4f7a;
+}
 
-    .card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid rgba(30, 46, 80, .09);
-        border-radius: 0.25rem;
-        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-    }
+.btn-facebook-link, .btn-facebook-link:active, .btn-facebook-link:focus {
+  color: #4e68a1 !important;
+  background: transparent;
+  border: none;
+}
 
-    .p-5 {
-        padding: 3rem !important;
-    }
+.btn-facebook-link:hover {
+  color: #3b4f7a !important;
+}
 
-    .card-body {
-        flex: 1 1 auto;
-        padding: 1.5rem 1.5rem;
-    }
+.btn-outline-facebook, .btn-outline-facebook:active, .btn-outline-facebook:focus {
+  color: #4e68a1 !important;
+  background: transparent;
+  border: 2px solid #4e68a1;
+}
 
-    .table td, .table th {
-        border-bottom: 0;
-        border-top: 1px solid #edf2f9;
-    }
+.btn-outline-facebook:hover {
+  color: #fff !important;
+  background: #4e68a1;
+  border: 2px solid #4e68a1;
+}
 
-    .table>:not(caption)>*>* {
-        padding: 1rem 1rem;
-        background-color: var(--bs-table-bg);
-        border-bottom-width: 1px;
-        box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
-    }
+/* twitter button */
+.btn-twitter, .btn-twitter:active, .btn-twitter:focus {
+  color: #fff !important;
+  background: #65b5f2;
+  border: 2px solid #65b5f2;
+}
 
-    .px-0 {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
+.btn-twitter:hover {
+  color: #fff !important;
+  background: #5294c6;
+  border: 2px solid #5294c6;
+}
 
-    .table thead th, tbody td, tbody th {
-        vertical-align: middle;
-    }
+.btn-twitter:hover {
+  color: #fff !important;
+  background: #5294c6;
+  border: 2px solid #5294c6;
+}
 
-    .mt-5 {
-        margin-top: 3rem !important;
-    }
+.btn-twitter-link, .btn-twitter-link:active, .btn-twitter-link:focus {
+  color: #65b5f2 !important;
+  background: transparent;
+  border: none;
+}
 
-    .icon-circle[class*=text-] [fill]:not([fill=none]), .icon-circle[class*=text-] svg:not([fill=none]), .svg-icon[class*=text-] [fill]:not([fill=none]), .svg-icon[class*=text-] svg:not([fill=none]) {
-        fill: currentColor !important;
-    }
+.btn-twitter-link:hover {
+  color: #5294c6 !important;
+}
 
-    .svg-icon>svg {
-        width: 1.45rem;
-        height: 1.45rem;
-    }
-    .amount {
-        white-space: nowrap; /* Memastikan teks tetap dalam satu baris */
-    }
+.btn-outline-twitter, .btn-outline-twitter:active, .btn-outline-twitter:focus {
+  color: #65b5f2 !important;
+  background: transparent;
+  border: 2px solid #65b5f2;
+}
+
+.btn-outline-twitter:hover {
+  color: #fff !important;
+  background: #65b5f2;
+  border: 2px solid #65b5f2;
+}
+
+/* google button */
+.btn-google, .btn-google:active, .btn-google:focus {
+  color: #fff !important;
+  background: #e05d4b;
+  border: 2px solid #e05d4b;
+}
+
+.btn-google:hover {
+  color: #fff !important;
+  background: #b94c3d;
+  border: 2px solid #b94c3d;
+}
+
+.btn-google-link, .btn-google-link:active, .btn-google-link:focus {
+  color: #e05d4b !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-google-link:hover {
+  color: #b94c3d !important;
+}
+
+.btn-outline-google, .btn-outline-google:active, .btn-outline-google:focus {
+  color: #e05d4b !important;
+  background: transparent;
+  border: 2px solid #e05d4b;
+}
+
+.btn-outline-google:hover {
+  color: #fff !important;
+  background: #e05d4b;
+  border: 2px solid #e05d4b;
+}
+
+/* linkedin button */
+.btn-linkedin, .btn-linkedin:active, .btn-linkedin:focus {
+  color: #fff !important;
+  background: #2083bc;
+  border: 2px solid #2083bc;
+}
+
+.btn-linkedin:hover {
+  color: #fff !important;
+  background: #186592;
+  border: 2px solid #186592;
+}
+
+.btn-linkedin-link, .btn-linkedin-link:active, .btn-linkedin-link:focus {
+  color: #2083bc !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-linkedin-link:hover {
+  color: #186592 !important;
+}
+
+.btn-outline-linkedin, .btn-outline-linkedin:active, .btn-outline-linkedin:focus {
+  color: #2083bc !important;
+  background: transparent;
+  border: 2px solid #2083bc;
+}
+
+.btn-outline-linkedin:hover {
+  color: #fff !important;
+  background: #2083bc;
+  border: 2px solid #2083bc;
+}
+
+/* pinterest button */
+.btn-pinterest, .btn-pinterest:active, .btn-pinterest:focus {
+  color: #fff !important;
+  background: #d2373b;
+  border: 2px solid #d2373b;
+}
+
+.btn-pinterest:hover {
+  color: #fff !important;
+  background: #ad2c2f;
+  border: 2px solid #ad2c2f;
+}
+
+.btn-pinterest-link, .btn-pinterest-link:active, .btn-pinterest-link:focus {
+  color: #d2373b !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-pinterest-link:hover {
+  color: #ad2c2f !important;
+}
+
+.btn-outline-pinterest, .btn-outline-pinterest:active, .btn-outline-pinterest:focus {
+  color: #d2373b !important;
+  background: transparent;
+  border: 2px solid #d2373b;
+}
+
+.btn-outline-pinterest:hover {
+  color: #fff !important;
+  background: #d2373b;
+  border: 2px solid #d2373b;
+}
+
+/* dribble button */
+.btn-dribbble, .btn-dribbble:active, .btn-dribbble:focus {
+  color: #fff !important;
+  background: #ec5f94;
+  border: 2px solid #ec5f94;
+}
+
+.btn-dribbble:hover {
+  color: #fff !important;
+  background: #b4446e;
+  border: 2px solid #b4446e;
+}
+
+.btn-dribbble-link, .btn-dribbble-link:active, .btn-dribbble-link:focus {
+  color: #ec5f94 !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-dribbble-link:hover {
+  color: #b4446e !important;
+}
+
+.btn-outline-dribbble, .btn-outline-dribbble:active, .btn-outline-dribbble:focus {
+  color: #ec5f94 !important;
+  background: transparent;
+  border: 2px solid #ec5f94;
+}
+
+.btn-outline-dribbble:hover {
+  color: #fff !important;
+  background: #ec5f94;
+  border: 2px solid #ec5f94;
+}
+
+/* instagram button */
+.btn-instagram, .btn-instagram:active, .btn-instagram:focus {
+  color: #fff !important;
+  background: #4c5fd7;
+  border: 2px solid #4c5fd7;
+}
+
+.btn-instagram:hover {
+  color: #fff !important;
+  background: #4252ba;
+  border: 2px solid #4252ba;
+}
+
+.btn-instagram-link, .btn-instagram-link:active, .btn-instagram-link:focus {
+  color: #4c5fd7 !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-instagram-link:hover {
+  color: #4252ba !important;
+}
+
+.btn-outline-instagram, .btn-outline-instagram:active, .btn-outline-instagram:focus {
+  color: #4c5fd7 !important;
+  background: transparent;
+  border: 2px solid #4c5fd7;
+}
+
+.btn-outline-instagram:hover {
+  color: #fff !important;
+  background: #4c5fd7;
+  border: 2px solid #4c5fd7;
+}
+
+/* youtube button */
+.btn-youtube, .btn-youtube:active, .btn-youtube:focus {
+  color: #fff !important;
+  background: #e52d27;
+  border: 2px solid #e52d27;
+}
+
+.btn-youtube:hover {
+  color: #fff !important;
+  background: #b31217;
+  border: 2px solid #b31217;
+}
+
+.btn-youtube-link, .btn-youtube-link:active, .btn-youtube-link:focus {
+  color: #e52d27 !important;
+  background: transparent;
+  border: none;
+}
+
+.btn-youtube-link:hover {
+  color: #b31217 !important;
+}
+
+.btn-outline-youtube, .btn-outline-youtube:active, .btn-outline-youtube:focus {
+  color: #e52d27 !important;
+  background: transparent;
+  border: 2px solid #e52d27;
+}
+
+.btn-outline-youtube:hover {
+  color: #fff !important;
+  background: #e52d27;
+  border: 2px solid #e52d27;
+}
+.btn-xs.btn-icon span, .btn-xs.btn-icon i {
+    line-height: 34px;
+}
+.btn-icon.btn-circle span, .btn-icon.btn-circle i {
+    margin-top: -1px;
+    margin-right: -1px;
+}
+.btn-icon i {
+    margin-top: -1px;
+}
+.btn-icon span, .btn-icon i {
+    display: block;
+    line-height: 50px;
+}
+a.btn, a.btn-social {
+    display: inline-block;
+}
+.mr-5 {
+    margin-right: 5px !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.btn-facebook, .btn-facebook:active, .btn-facebook:focus {
+    color: #fff !important;
+    background: #4e68a1;
+    border: 2px solid #4e68a1;
+}
+.btn-circle {
+    border-radius: 50% !important;
+}
+.project-info-box p {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d5dadb;
+}
+p {
+    font-family: "Barlow", sans-serif !important;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #686c6d;
+    letter-spacing: 0.03rem;
+    margin-bottom: 10px;
+}
+b, strong {
+    font-weight: 700 !important;
+}
 </style>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>DETAILS Transaksi</h5>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
+            </div><!-- / project-info-box -->
 
-<div class="container-fluid">
-    <div class="image-container">
-        <div class="card border-0 shadow">
-            <h3 align= "center">Bukti Bayar</h3>
-            @empty($transaksi->bukti_bayar)
-            <img src="{{url('admin/image/nofoto.jpeg')}}" alt="No Image Available">
+            <div class="project-info-box">
+                <p><b>Tanggal Transaksi:</b> {{ $transaksi->tanggal_transaksi }}</p>
+                <p><b>Metode Pembayaran:</b> {{ $transaksi->metode_pembayaran }}</p>
+                <p><b>Total Biaya:</b> {{ $transaksi->total_biaya }}</p>
+
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-0 mb-0">
+                <p class="mb-0">
+                    <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
+                    <a href="#" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            @if(empty($transaksi->bukti_bayar))
+                <img src="{{ url('admin/image/tesla.jpg') }}" alt="project-image" class="rounded">
             @else
-            <img src="{{url('admin/image')}}/{{$transaksi->bukti_bayar}}" alt="Transaction Proof">
-            @endempty
-        </div>
-    </div>
-    <div class="transaction-container">
-        <div class="card">
-            <div class="card-body p-5">
-                <h2>Transaksi</h2>
-                <p class="fs-sm">Ini adalah tanda terima pembayaran sebesar <strong>Rp {{$transaksi->total_biaya}}</strong></p>
-
-                <div class="border-top border-gray-200 pt-4 mt-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="text-muted mb-2">Nomer Plat Mobil:</div>
-                            <strong>{{$transaksi->noplat_mobil}}</strong>
-                          </div>
-                        <div class="col-md-6 text-md-end">
-                            <div class="text-muted mb-2">Tanggal Transaksi</div>
-                            <strong>{{$transaksi->tanggal_transaksi}}</strong>
-                        </div>
-                    </div>
-                </div>
-                <table class="table border-bottom border-gray-200 mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="fs-sm text-dark text-uppercase-bold-sm px-0">Layanan</th>
-                            <th scope="col" class="fs-sm text-dark text-uppercase-bold-sm text-end px-0">Jumlah</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="px-0">{{$transaksi->diskripsi}}</td>
-                            <td class="text-end px-0"><span class="amount">Rp {{$transaksi->total_biaya}}</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="mt-5">
-                    <div class="d-flex justify-content-end mt-3">
-                        <h5 class="me-3">Total:</h5>
-                        <h5 class="text-success">Rp {{$transaksi->total_biaya}}</h5>
-                    </div>
-                </div>
-            </div>
-            <a href="#!" class="btn btn-dark btn-lg card-footer-btn justify-content-center text-uppercase-bold-sm hover-lift-light">
-                <span class="svg-icon text-white me-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-g</title></svg>
-                </span>
-            </a>
-        </div>
+                <img src="{{ url('admin/image') }}/{{ $transaksi->bukti_bayar }}" alt="project-image" class="rounded">
+            @endif
+        </div><!-- / column -->
     </div>
 </div>
 

@@ -101,5 +101,9 @@ class UsersController extends Controller
     public function destroy(string $id)
     {
         //
+        $users = Users::find($id);
+        $users->delete();
+
+        return redirect('admin/users');
     }
 }
