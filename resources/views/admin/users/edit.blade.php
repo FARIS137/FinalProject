@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <h1 align="center">Input Users</h1>
 
-<form method="POST" action="{{route('users.update',$us->id)}}"
+<form method="POST" action="{{route('users.update',$us->id)}}" 
 enctype="multipart/form-data">
 @csrf
 @method('PUT')

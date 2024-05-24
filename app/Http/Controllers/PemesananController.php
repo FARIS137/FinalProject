@@ -14,6 +14,7 @@ class PemesananController extends Controller
     {
         //
         $pemesanan = Pemesanan::all();
+
         return view('admin.pemesanan.index', compact('pemesanan'));
     }
 
@@ -23,8 +24,10 @@ class PemesananController extends Controller
     public function create()
     {
         //
+
+        $jenis_mobil = ['biasa', 'sport'];
         $layanan = Layanan::all();
-        return view('admin.pemesanan.create', compact('layanan'));
+        return view('admin.pemesanan.create', compact('layanan', 'jenis_mobil'));
     }
 
     /**
@@ -33,21 +36,34 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
         //
-        //proses upload foto
-        //jika file foto ada yg terupload 
-        if (!empty($request->foto)) {
-            //maka proses ini akan dijalankan
-            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
-            //setelah fotonya telah masuk maka tempatkan ke publik
-            $request->foto->move(public_path('admin/image'), $fileName);
-        } else {
-            $fileName = '';
-        }
+        //validasi
+        $request->validate(
+            [
+                'tanggal_awal_waktu' => 'required',
+                'jam_awal_booking' => 'required',
+                'noplat_mobil' => 'required',
+                'layanan_id' => 'required',
+                'customer_name' => 'required',
+                'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ],
+            [
+                'tanggal_awal_waktu.required' => 'Tanggal awal waktu Wajib diisi',
+                'jam_awal_booking.required' => 'Jam awal booking Wajib diisi',
+                'noplat_mobil.required' => 'Noplat mobil Wajib diisi',
+                'layanan_id.required' => 'Layanan Wajib diisi',
+                'customer_name.required' => 'Nama Wajib diisi',
+                'foto.max' => 'Foto maxsimal 2 MB',
+                'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg',
+            ]
+
+        );
+
 
         $pemesanan = new Pemesanan;
         $pemesanan->tanggal_awal_booking = $request->tanggal_awal_booking;
         $pemesanan->jam_awal_booking = $request->jam_awal_booking;
         $pemesanan->catatan = $request->catatan;
+        $pemesanan->jenis_mobil = $request->jenis_mobil;
         $pemesanan->noplat_mobil = $request->noplat_mobil;
         $pemesanan->customer_name = $request->customer_name;
         $pemesanan->layanan_id = $request->layanan_id;
@@ -71,10 +87,10 @@ class PemesananController extends Controller
     public function edit(string $id)
     {
         //
-        $jenis = Pemesanan::find($id);
-        $jm = Pemesanan::all('jenis_mobil');
+        $layanan = Layanan::all();
+        $ps = Pemesanan::find($id);
         $jenis_mobil = ['biasa', 'sport'];
-        return view('admin.pemesanan.edit', compact('jenis', 'jm', 'jenis_mobil'));
+        return view('admin.pemesanan.edit', compact('layanan', 'ps', 'jenis_mobil'));
     }
 
     /**
@@ -83,7 +99,6 @@ class PemesananController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        //foto lama 
         $fotoLama = Pemesanan::select('foto')->where('id', $id)->get();
         foreach ($fotoLama as $f1) {
             $fotoLama = $f1->foto;
@@ -99,14 +114,16 @@ class PemesananController extends Controller
         } else {
             $fileName = $fotoLama;
         }
+        //tambah data menggunakan eloquent
         $pemesanan = Pemesanan::find($id);
-        $pemesanan = new Pemesanan;
         $pemesanan->tanggal_awal_booking = $request->tanggal_awal_booking;
         $pemesanan->jam_awal_booking = $request->jam_awal_booking;
         $pemesanan->catatan = $request->catatan;
+        $pemesanan->jenis_mobil = $request->jenis_mobil;
         $pemesanan->noplat_mobil = $request->noplat_mobil;
         $pemesanan->customer_name = $request->customer_name;
         $pemesanan->layanan_id = $request->layanan_id;
+        $pemesanan->foto = $fileName;
         $pemesanan->save();
         return redirect('admin/pemesanan');
     }
@@ -117,5 +134,9 @@ class PemesananController extends Controller
     public function destroy(string $id)
     {
         //
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan->delete();
+
+        return redirect('admin/pemesanan');
     }
 }

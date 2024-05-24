@@ -6,10 +6,16 @@
    
     body{
     background:#f5f5f5;
-    margin-top:20px;}
+    margin:auto;
+    width: 50%
+text-align: center;
+}
+
 /*------- portfolio -------*/
 .project {
-  margin: 15px 0;
+  margin: auto;
+  width: 500px;
+  background-image: url() 
 }
 
 .no-gutter .project {
@@ -411,25 +417,24 @@ p {
 b, strong {
     font-weight: 700 !important;
 }
-
+.row {
+  justify-content: center;
+}
 </style>
 <div class="container">
     <br>
     <div class="row">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
-                <h5>DETAILS PEMESANAN</h5>
+                <h5>DETAILS LAYANAN</h5>
                 <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
-                <p><b>Tanggal Booking:</b> {{ $pemesanan->tanggal_awal_booking }}</p>
-                <p><b>Jam Booking:</b> {{ $pemesanan->jam_awal_booking }}</p>
-                <p><b>Catatan:</b> {{ $pemesanan->catatan }}</p>
-                <p><b>Jenis Mobil: </b> {{ $pemesanan->jenis_mobil }}</p>
-                <p><b>NoPlat Mobil: </b> {{ $pemesanan->noplat_mobil }}</p>
-                <p ><b>Nama Pelanggan:</b> {{ $pemesanan->customer_name }}</p>
-                <p ><b>Layanan:</b> {{ $pemesanan->layanan->jenis_layanan }}</p>
+                <p><b>Jenis Layanan:</b> {{ $layanan->jenis_layanan }}</p>
+                <p><b>Harga:</b> {{ $layanan->harga }}</p>
+                <p><b>Deskripsi:</b> {{ $layanan->deskripsi }}</p>
+               
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">
@@ -443,13 +448,6 @@ b, strong {
             </div><!-- / project-info-box -->
         </div><!-- / column -->
 
-        <div class="col-md-7">
-            @if(empty($pemesanan->foto))    
-                <img src="{{ url('admin/image/nofoto.jpeg') }}" alt="project-image" class="rounded">
-            @else
-                <img src="{{ url('admin/image') }}/{{ $pemesanan->foto }}" alt="project-image" class="rounded">
-            @endif
-        </div><!-- / column -->
     </div>
 </div>
 

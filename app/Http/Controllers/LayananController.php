@@ -23,6 +23,14 @@ class LayananController extends Controller
     public function create()
     {
         //
+
+        $l1 = ['lay' => 'Regular', 'harga' => 55000];
+        $l2 = ['lay' => 'Drywash', 'harga' => 75000];
+        $l3 = ['lay' => 'Medium', 'harga' => 125000];
+        $l4 = ['lay' => 'Complete', 'harga' => 220000];
+        $ar_layanan = [$l1, $l2, $l3, $l4];
+        // $layanan = ['Regular'=> 55000, 'Drywash'=> 75000, 'Medium'=> 125000, 'Complete'=> 220000];
+        return view('admin.layanan.create', compact('ar_layanan'));
     }
 
     /**
@@ -30,14 +38,27 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi
+        $request->validate(
+            [
+                'jenis_layanan' => 'required',
+                'deskripsi' => 'required',
+            ],
+            [
+                'jenis_layanan.required' => 'Jenis Layanan Wajib diisi',
+                'deskripsi.required' => 'Deskripsi Wajib diisi',
+            ]
+
+        );
+
+
+
         $layanan = new layanan;
         $layanan->jenis_layanan = $request->jenis_layanan;
         $layanan->harga = $request->harga;
         $layanan->deskripsi = $request->deskripsi;
         $layanan->save();
         return redirect('admin/layanan');
-
     }
 
     /**
@@ -46,6 +67,8 @@ class LayananController extends Controller
     public function show(string $id)
     {
         //
+        $layanan = Layanan::find($id);
+        return view('admin.layanan.detail', compact('layanan'));
     }
 
     /**
@@ -54,6 +77,14 @@ class LayananController extends Controller
     public function edit(string $id)
     {
         //
+        $la = Layanan::find($id);
+        $l1 = ['lay' => 'Regular', 'harga' => 55000];
+        $l2 = ['lay' => 'Drywash', 'harga' => 75000];
+        $l3 = ['lay' => 'Medium', 'harga' => 125000];
+        $l4 = ['lay' => 'Complete', 'harga' => 220000];
+        $ar_layanan = [$l1, $l2, $l3, $l4];
+        // $layanan = ['Regular'=> 55000, 'Drywash'=> 75000, 'Medium'=> 125000, 'Complete'=> 220000];
+        return view('admin.layanan.edit', compact('la', 'ar_layanan'));
     }
 
     /**
@@ -62,6 +93,15 @@ class LayananController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
+
+        //tambah data menggunakan eloquent
+        $layanan = Layanan::find($id);
+        $layanan->jenis_layanan = $request->jenis_layanan;
+        $layanan->harga = $request->harga;
+        $layanan->deskripsi = $request->deskripsi;
+        $layanan->save();
+        return redirect('admin/layanan');
     }
 
     /**
@@ -70,5 +110,9 @@ class LayananController extends Controller
     public function destroy(string $id)
     {
         //
+        $layanan = Layanan::find($id);
+        $layanan->delete();
+
+        return redirect('admin/layanan');
     }
 }

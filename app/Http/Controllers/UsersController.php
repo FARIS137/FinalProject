@@ -32,6 +32,32 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+
+        //validasi
+        $request->validate(
+            [
+                'username' => 'required|max:50',
+                'password' => 'required|unique:usesr|max:10',
+                'email' => 'required|unique:usesr',
+                'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'hak_akses' => 'required'
+            ],
+            [
+                'username.required' => 'Nama wajib diisi',
+                'username.max' => 'Nama maksimal 50 kata',
+                'password.max' => 'Password maxsimal 10 karakter',
+                'password.required' => 'Password wajib diisi',
+                'password.unique' => 'Password tidak boleh sama',
+                'email.unique' => 'Email tidak boleh sama',
+                'email.required' => 'Email wajib diisi',
+                'foto.max' => 'Foto maxsimal 2 MB',
+                'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg',
+                'hak_akses.required' => 'Wajib diisi salah satu',
+            ]
+
+        );
+
+
         $users = new Users;
         $users->username = $request->username;
         $users->password = $request->password;
@@ -101,5 +127,10 @@ class UsersController extends Controller
     public function destroy(string $id)
     {
         //
+
+        $users = Users::find($id);
+        $users->delete();
+
+        return redirect('admin/users');
     }
 }
