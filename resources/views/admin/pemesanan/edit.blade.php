@@ -19,6 +19,7 @@ enctype="multipart/form-data">
     <div class="col-8">
       <input id="text1" name="jam_awal_booking" type="time" class="form-control"  value="{{$ps->jam_awal_booking}}" >
     </div>
+    </div>
     <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Catatan</label> 
     <div class="col-8">

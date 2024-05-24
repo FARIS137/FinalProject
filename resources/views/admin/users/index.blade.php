@@ -8,19 +8,13 @@
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
                             <div class="card-header">
                                 <a href="{{route('users.create')}}" 
                             class="btn btn-md btn-primary" >
                                 <i class="fa-solid fa-square-plus">
-                                </i></a>
+                                </i> Add User</a>
                             </div>
+        <div class="card-body">
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -54,8 +48,32 @@
                                                 <a href="{{route('users.show', $u->id)}}"
                                                     class="btn btn-sm btn-success">
                                                     <i class="fa-solid fa-eye"></i></a>
-                                                <a href="{{route('users.edit', $u->id)}}"
-                                                    class="btn btn-sm btn-warning">Edit</a>  
+                                                    <a href="{{ route('users.edit', $u->id) }}" class="btn btn-sm btn-warning">
+                                                    <i class="fa-solid fa-pen-to-square"></i> </a>
+                                                    </a> <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+                                                    data-bs-target="#exampleModal{{$u->id}}">
+                                                    <i class="fa-solid fa-trash-can"></i> </button>
+                                                <!-- Modal -->
+<div class="modal fade" id="exampleModal{{$u->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin akan menghapus data? {{$u->users}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <form action="{{ route('users.destroy', $u->id) }}"
+         method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+                                         
                                             </td>
                                         </tr>
                                         @endforeach
