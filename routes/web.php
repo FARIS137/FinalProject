@@ -9,7 +9,7 @@ use App\Http\Controllers\PemesananController;
 
 
 Route::get('/', function () {
-    return view('front.home');
+    return view('/front.home');
 });
 
 Route::get('/home', function () {
