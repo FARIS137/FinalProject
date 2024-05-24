@@ -46,6 +46,8 @@ class LayananController extends Controller
     public function show(string $id)
     {
         //
+        $layanan = Layanan::find($id);
+        return view('admin.layanan.detail', compact('layanan'));
     }
 
     /**
@@ -54,7 +56,10 @@ class LayananController extends Controller
     public function edit(string $id)
     {
         //
+        $ly = Layanan::find($id);
+        return view('admin.layanan.edit', compact('ly'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -62,6 +67,12 @@ class LayananController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $layanan = Layanan::find($id);
+        $layanan->jenis_layanan = $request->jenis_layanan;
+        $layanan->harga = $request->harga;
+        $layanan->deskripsi = $request->deskripsi;
+        $layanan->save();
+        return redirect('admin/layanan');
     }
 
     /**
@@ -70,5 +81,9 @@ class LayananController extends Controller
     public function destroy(string $id)
     {
         //
+        $layanan = Layanan::find($id);
+        $layanan->delete();
+
+        return redirect('admin/layanan');
     }
 }

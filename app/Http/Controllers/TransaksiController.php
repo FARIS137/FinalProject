@@ -22,6 +22,8 @@ class TransaksiController extends Controller
     public function create()
     {
         //
+        $transaksi = Transaksi::all();
+        return view('admin.transaksi.create', compact('transaksi'));
     }
 
     /**
@@ -29,22 +31,40 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $transaksi = new transaksi;
+        // Validate the incoming request
+        $request->validate([
+            'tanggal_transaksi' => 'required|date',
+            'metode_pembayaran' => 'required|string',
+            'bukti_bayar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'total_biaya' => 'required|numeric',
+        ]);
+    
+        // Initialize a new Transaksi object
+        $transaksi = new Transaksi;
         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
-        $transaksi->metode_pembayarab = $request->metode_pembayarab;
-        $transaksi->bukti_bayar = $request->bukti_bayar;
-        $transaksi->total_biaya = $request->total_biayai;
+        $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        // Handle file upload for bukti_bayar
+        if ($request->hasFile('bukti_bayar')) {
+            $fileName = 'foto-' . time() . '.' . $request->bukti_bayar->extension();
+            $request->bukti_bayar->move(public_path('admin/image'), $fileName);
+            $transaksi->bukti_bayar = $fileName;
+        } else {
+            $transaksi->bukti_bayar = null;
+        }
+    
+        $transaksi->bukti_bayar = $fileName;
+        $transaksi->total_biaya = $request->total_biaya;
         $transaksi->save();
-        return redirect('admin/layanan');
+        return redirect('admin/transaksi');
     }
-
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         //
+        $transaksi = Transaksi::find($id);
+        return view('admin.transaksi.detail', compact('transaksi'));
     }
 
     /**
@@ -53,6 +73,9 @@ class TransaksiController extends Controller
     public function edit(string $id)
     {
         //
+        $tr = Transaksi::find($id);
+        $transaksi = Transaksi::all();
+        return view('admin.transaksi.edit', compact('tr','transaksi'));
     }
 
     /**
@@ -61,6 +84,29 @@ class TransaksiController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $fotoLama = Transaksi::select('bukti_bayar')->where('id', $id)->get();
+        foreach($fotoLama as $f1){
+            $fotoLama = $f1->bukti_bayar;
+        }
+        //jika foto sudah ada yang terupload 
+        if(!empty($request->bukti_bayar)){
+            //maka proses selanjutnya 
+        if(!empty($fotoLama->bukti_bayar)) unlink(public_path('admin/image'.$fotoLama->bukti_bayar));
+        //proses ganti foto
+            $fileName = 'foto-' .$request->id.'.'.$request->bukti_bayar->extension();
+            //setelah tau fotonya sudah masuk maka tempatkan ke public
+            $request->bukti_bayar->move(public_path('admin/image'), $fileName);
+        } else{
+            $fileName = $fotoLama;
+        }
+
+         $transaksi = Transaksi::find($id);
+         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+         $transaksi->metode_pembayaran = $request->metode_pembayaran;
+         $transaksi->total_biaya = $request->total_biaya;
+         $pemesanan->bukti_bayar = $fileName;
+         $pemesanan->save();
+         return redirect('admin/transaksi');
     }
 
     /**
@@ -69,5 +115,9 @@ class TransaksiController extends Controller
     public function destroy(string $id)
     {
         //
+        $transaksi = Transaksi::find($id);
+        $transaksi->delete();
+
+        return redirect('admin/transaksi');
     }
 }

@@ -2,47 +2,120 @@
 @section('konten')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
 <style>
-    /* Add your styles here */
+body{margin-top:20px;}
+.icon-box.medium {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+.icon-box {
+    font-size: 30px;
+    margin-bottom: 33px;
+    display: inline-block;
+    color: #ffffff;
+    height: 65px;
+    width: 65px;
+    line-height: 65px;
+    background-color: #59b73f;
+    text-align: center;
+    border-radius: 0.3rem;
+}
+.social-icon-style2 li a {
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    background: #59b73f;
+    height: 41px;
+    line-height: 41px;
+    width: 41px;
+}
+.rounded-3 {
+    border-radius: 0.3rem !important;
+}
+
+.social-icon-style2 {
+    margin-bottom: 0;
+    display: inline-block;
+    padding-left: 10px;
+    list-style: none;
+}
+
+.social-icon-style2 li {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+a, a:active, a:focus {
+    color: #616161;
+    text-decoration: none;
+    transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+    -ms-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+}
+
+.text-secondary, .text-secondary-hover:hover {
+    color: #59b73f !important;
+}
+.display-25 {
+    font-size: 1.4rem;
+}
+
+.text-primary, .text-primary-hover:hover {
+    color: #ff712a !important;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+.mb-1-6, .my-1-6 {
+    margin-bottom: 1.6rem;
+}
 </style>
 <div class="container">
-    <br>
-    <div class="row">
-        <div class="col-md-5">
-            <div class="project-info-box mt-0">
-                <h5>DETAILS Users</h5>
-                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
-            </div><!-- / project-info-box -->
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+            <div class="card border-0 shadow">
+            @empty($users->foto)
+                <img src="{{url('admin/image/nophoto.jpg')}}" alt="...">
+            @else 
+            <img src="{{url('admin/image')}}/{{$users->foto}}" alt="...">
+            @endempty
 
-            <div class="project-info-box">
-                <p><b>Username:</b> {{ $users->username }}</p>
-                <p><b>Password:</b> {{ $users->password }}</p>
-                <p><b>Email:</b> {{ $users->email }}</p>
-                <p><b>Hak Akses: </b> {{ $users->hak_akses }}</p>
-                {{-- <p><b>NoPlat Mobil: </b> {{ $pemesanan->noplat_mobil }}</p>
-                <p ><b>Nama Pelanggan:</b> {{ $pemesanan->customer_name }}</p>
-                <p ><b>Layanan:</b> {{ $pemesanan->layanan->jenis_layanan }}</p> --}}
-            </div><!-- / project-info-box -->
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0">{{$users->username}}</h3>
+                        <span class="text-primary">{{$users->password}}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3"><a href="#!">
+                            <i class="far fa-envelope display-25 me-3 text-secondary">
 
-            <div class="project-info-box mt-0 mb-0">
-                <p class="mb-0">
-                    <span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
-                    <a href="#" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-pinterest"></i></a>
-                    <a href="#" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
-                </p>
-            </div><!-- / project-info-box -->
-        </div><!-- / column -->
+                            </i>{{$users->email}}</a></li>
+                        <li class="mb-3"><a href="#!">
+                            <i class="fas fa-mobile-alt display-25 me-3 text-secondary">
 
-        <div class="col-md-7">
-            @if(empty($users->foto))    
-                <img src="{{ url('admin/image/tesla.jpg') }}" alt="project-image" class="rounded">
-            @else
-                <img src="{{ url('admin/image') }}/{{ $users->foto }}" alt="project-image" class="rounded">
-            @endif
-        </div><!-- / column -->
-    </div>
-</div>
+                            </i>{{$users->hak_akses}}</li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
 
 @endsection

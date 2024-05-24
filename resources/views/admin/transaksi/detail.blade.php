@@ -416,17 +416,15 @@ b, strong {
     <div class="row">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
-                <h5>DETAILS PEMESANAN</h5>
+                <h5>DETAILS Transaksi</h5>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
-                <p><b>Tanggal Booking:</b> {{ $pemesanan->tanggal_awal_booking }}</p>
-                <p><b>Jam Booking:</b> {{ $pemesanan->jam_awal_booking }}</p>
-                <p><b>Catatan:</b> {{ $pemesanan->catatan }}</p>
-                <p><b>Jenis Mobil: </b> {{ $pemesanan->jenis_mobil }}</p>
-                <p><b>NoPlat Mobil: </b> {{ $pemesanan->noplat_mobil }}</p>
-                <p ><b>Nama Pelanggan:</b> {{ $pemesanan->customer_name }}</p>
-                <p ><b>Layanan:</b> {{ $pemesanan->layanan->jenis_layanan}}</p>
+                <p><b>Tanggal Transaksi:</b> {{ $transaksi->tanggal_transaksi }}</p>
+                <p><b>Metode Pembayaran:</b> {{ $transaksi->metode_pembayaran }}</p>
+                <p><b>Total Biaya:</b> {{ $transaksi->total_biaya }}</p>
+                
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">
@@ -441,10 +439,10 @@ b, strong {
         </div><!-- / column -->
 
         <div class="col-md-7">
-            @if(empty($pemesanan->foto))    
-                <img src="{{ url('admin/image/nophoto.jpg') }}" alt="project-image" class="rounded">
+            @if(empty($transaksi->bukti_bayar))    
+                <img src="{{ url('admin/image/tesla.jpg') }}" alt="project-image" class="rounded">
             @else
-                <img src="{{ url('admin/image') }}/{{ $pemesanan->foto }}" alt="project-image" class="rounded">
+                <img src="{{ url('admin/image') }}/{{ $transaksi->bukti_bayar }}" alt="project-image" class="rounded">
             @endif
         </div><!-- / column -->
     </div>

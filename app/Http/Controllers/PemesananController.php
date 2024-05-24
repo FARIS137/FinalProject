@@ -119,5 +119,9 @@ class PemesananController extends Controller
     public function destroy(string $id)
     {
         //
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan->delete();
+
+        return redirect('admin/pemesanan');
     }
 }
