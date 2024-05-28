@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<h1 align="center">Edit Pemesanan</h1>
+<h1 align="center">Input Pemesanan</h1>
 <form method="POST" action="{{route('pemesanan.update', $ps->id)}}"
 enctype="multipart/form-data">
 @csrf
@@ -57,8 +57,8 @@ enctype="multipart/form-data">
     <label for="select" class="col-4 col-form-label">Layanan</label>
     <div class="col-8">
       <select id="select" name="layanan_id" class="custom-select">
-        @foreach($layanan as $l)
-        <option value="{{$l->id}}" {{ $ps->layanan_id == $l->id ? 'selected' : '' }}>{{$l->jenis_layanan}}</option>
+        @foreach($layanan as $l )
+        <option value="{{$l->id}}">{{$l->jenis_layanan}}</option>
         @endforeach
       </select>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class UsersController extends Controller
@@ -32,12 +33,39 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+
+        //validasi
+        $request->validate(
+            [
+                'username' => 'required|max:50',
+                'password' => 'required|unique:users|max:10',
+                'email' => 'required|unique:users',
+                'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'hak_akses' => 'required'
+            ],
+            [
+                'username.required' => 'Nama wajib diisi',
+                'username.max' => 'Nama maksimal 50 kata',
+                'password.max' => 'Password maxsimal 10 karakter',
+                'password.required' => 'Password wajib diisi',
+                'password.unique' => 'Password tidak boleh sama',
+                'email.unique' => 'Email tidak boleh sama',
+                'email.required' => 'Email wajib diisi',
+                'foto.max' => 'Foto maxsimal 2 MB',
+                'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg',
+                'hak_akses.required' => 'Wajib diisi salah satu',
+            ]
+
+        );
+
+
         $users = new Users;
         $users->username = $request->username;
         $users->password = $request->password;
         $users->email = $request->email;
         $users->hak_akses = $request->hak_akses;
         $users->save();
+        Alert::success('Tambah User', 'Berhasil Tambah User');
         return redirect('admin/users');
     }
 
@@ -92,6 +120,7 @@ class UsersController extends Controller
         $users->hak_akses = $request->hak_akses;
         $users->foto = $fileName;
         $users->save();
+        Alert::success('Update User', 'Berhasil Update User');
         return redirect('admin/users');
     }
 
@@ -101,6 +130,7 @@ class UsersController extends Controller
     public function destroy(string $id)
     {
         //
+
         $users = Users::find($id);
         $users->delete();
 
