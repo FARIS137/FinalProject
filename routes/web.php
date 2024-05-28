@@ -5,6 +5,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -28,9 +29,9 @@ Route::get('/contact', function () {
     return view('/front/contact');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// });
 
 
 Route::prefix('admin')->group(function(){
@@ -47,6 +48,8 @@ Route::post('/users/store', [UsersController::class, 'store']);
 Route::post('/transaksi/store', [TransaksiController::class, 'store']);
 
 Route::resource('admin/pemesanan', PemesananController::class);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 });
