@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class UsersController extends Controller
@@ -37,8 +38,8 @@ class UsersController extends Controller
         $request->validate(
             [
                 'username' => 'required|max:50',
-                'password' => 'required|unique:usesr|max:10',
-                'email' => 'required|unique:usesr',
+                'password' => 'required|unique:users|max:10',
+                'email' => 'required|unique:users',
                 'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'hak_akses' => 'required'
             ],
@@ -64,6 +65,7 @@ class UsersController extends Controller
         $users->email = $request->email;
         $users->hak_akses = $request->hak_akses;
         $users->save();
+        Alert::success('Tambah User', 'Berhasil Tambah User');
         return redirect('admin/users');
     }
 
@@ -118,6 +120,7 @@ class UsersController extends Controller
         $users->hak_akses = $request->hak_akses;
         $users->foto = $fileName;
         $users->save();
+        Alert::success('Update User', 'Berhasil Update User');
         return redirect('admin/users');
     }
 
