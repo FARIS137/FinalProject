@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -33,12 +33,16 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    {{-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- Spinner End -->
 
 
@@ -56,6 +60,38 @@
                 <a href="/about" class="nav-item nav-link">About</a>
                 <a href="/service" class="nav-item nav-link">Services</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
+                 {{-- logic login dan regiter --}}
+                 @guest
+                 @if (Route::has('login'))
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                     </li>
+                 @endif
+
+                 @if (Route::has('register'))
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                     </li>
+                 @endif
+             @else
+                 <li class="nav-item dropdown">
+                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                         {{ Auth::user()->name }}
+                     </a>
+
+                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                         <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('Logout') }}
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                         </form>
+                     </div>
+                 </li>
+             @endguest
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
