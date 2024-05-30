@@ -16,9 +16,13 @@
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
+                            @if(Auth::user()->role == 'admin')
                             <a class="nav-link" href="{{route('layanan.index')}}">Layanan </a>
+                            @endif
                             <a class="nav-link" href="{{route('transaksi.index')}}">Transaksi </a>
+                            @if(Auth::user()->role == 'admin')
                             <a class="nav-link" href="{{route('users.index')}}">Users </a>
+                            @endif
                             <a class="nav-link" href="{{route('pemesanan.index')}}">Pemesanan </a>
                         </nav>
                     </div>

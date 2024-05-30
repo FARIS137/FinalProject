@@ -8,7 +8,6 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\DashboardController;
 
 
-
 Route::get('/', function () {
     return view('front.home');
 });
@@ -33,9 +32,11 @@ Route::get('/contact', function () {
 //     return view('admin.dashboard');
 // });
 
+Route::group(['middleware' => ['auth', 'role:admin|manager|staff']], function(){
 
 Route::prefix('admin')->group(function(){
 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('layanan', LayananController::class);
 Route::resource('transaksi', TransaksiController::class);
@@ -49,12 +50,14 @@ Route::post('/transaksi/store', [TransaksiController::class, 'store']);
 
 Route::resource('admin/pemesanan', PemesananController::class);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 });
+});
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
