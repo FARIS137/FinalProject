@@ -20,8 +20,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'is_active',
     ];
-
+    public function role(string $role): bool
+    {
+        return $this->role === $role;
+        //untuk membandingkan dan menyamakan anatar 2 variable dan fungsi
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

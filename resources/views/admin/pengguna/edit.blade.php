@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <h1 align="center">Input Users</h1>
 
-<form method="POST" action="{{route('users.update',$us->id)}}" 
+<form method="POST" action="{{route('pengguna.update',$us->id)}}" 
 enctype="multipart/form-data">
 @csrf
 @method('PUT')
@@ -33,7 +33,7 @@ enctype="multipart/form-data">
       <label for="select" class="col-4 col-form-label">Pilihan Hak akses</label> 
       <div class="col-8">
         <select id="select" name="hak_akses" class="custom-select">
-          @foreach($users as $user)
+          @foreach($pengguna as $user)
           <option value="{{$user->hak_akses}}">{{$user->hak_akses}}</option>
   
          @endforeach  

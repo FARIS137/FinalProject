@@ -13,7 +13,7 @@
   </ul>
 </div>
 @endif
-<form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
+<form method="POST" action="{{route('pengguna.store')}}" enctype="multipart/form-data">
     @csrf
 
   <div class="form-group row">
@@ -75,7 +75,7 @@
       {{$message}}
     </div>
     @enderror
-        @foreach($users as $user)
+        @foreach($pengguna as $user)
         <option value="{{$user->hak_akses}}">{{$user->hak_akses}}</option>
 
        @endforeach  

@@ -16,7 +16,7 @@
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a href="{{route('users.create')}}" 
+                                <a href="{{route('pengguna.create')}}" 
                             class="btn btn-md btn-primary" >
                                 <i class="fa-solid fa-square-plus">
                                 </i></a>
@@ -43,7 +43,7 @@
                                     </tfoot>
                                     <tbody>
                                         
-                                        @foreach($users as $u)
+                                        @foreach($pengguna as $u)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$u->username}}</td>
@@ -51,10 +51,10 @@
                                             <td>{{$u->email}}</td>
                                             <td>{{$u->hak_akses}}</td>
                                             <td>
-                                                <a href="{{route('users.show', $u->id)}}"
+                                                <a href="{{route('pengguna.show', $u->id)}}"
                                                     class="btn btn-sm btn-success">
                                                     <i class="fa-solid fa-eye"></i></a>
-                                                <a href="{{route('users.edit', $u->id)}}"
+                                                <a href="{{route('pengguna.edit', $u->id)}}"
                                                     class="btn btn-sm btn-warning">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 
@@ -76,7 +76,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <form action="{{ route('users.destroy', $u->id) }}" method="POST" style="display:inline;">
+                                                                    <form action="{{ route('pengguna.destroy', $u->id) }}" method="POST" style="display:inline;">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -17,6 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->alias([
             'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+            'role' => \App\Http\Middleware\Role::class,
+            'checkAktive' => \App\Http\Middleware\CheckActive::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
