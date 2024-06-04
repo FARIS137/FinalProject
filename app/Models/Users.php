@@ -3,16 +3,44 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Users extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable; // Importing the Authenticatable class
+class Users extends Authenticatable
 {
     use HasFactory;
+
     protected $table = 'users';
 
-    protected $fillable = ['username', 'password', 'email', 'hak_akses'];
+    protected $fillable = [
+        'name',
+        'email',
+        'verified_at',
+        'password',
+        'remember_token',
+        'role',
+        'is_active'
+    ];
 
-    public function pemesanan (){
-        return $this->haveMany(Pemesanan::class);
+    public $timestamps = false;
+
+    /**
+     * Check if the user has a specific role.
+     *
+     * @param  string  $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class);
     }
 }

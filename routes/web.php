@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth', 'role:admin|manager|staff']], function(){
 
 Route::prefix('admin')->group(function(){
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('layanan', LayananController::class);
 Route::resource('transaksi', TransaksiController::class);
