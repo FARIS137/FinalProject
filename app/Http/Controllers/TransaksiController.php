@@ -38,7 +38,7 @@ class TransaksiController extends Controller
             'bukti_bayar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'total_biaya' => 'required|numeric',
         ]);
-    
+
         // Initialize a new Transaksi object
         $transaksi = new Transaksi;
         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
@@ -51,8 +51,7 @@ class TransaksiController extends Controller
         } else {
             $transaksi->bukti_bayar = null;
         }
-    
-        $transaksi->bukti_bayar = $fileName;
+
         $transaksi->total_biaya = $request->total_biaya;
         $transaksi->save();
         return redirect('admin/transaksi');
@@ -75,7 +74,7 @@ class TransaksiController extends Controller
         //
         $tr = Transaksi::find($id);
         $transaksi = Transaksi::all();
-        return view('admin.transaksi.edit', compact('tr','transaksi'));
+        return view('admin.transaksi.edit', compact('tr', 'transaksi'));
     }
 
     /**
@@ -85,28 +84,28 @@ class TransaksiController extends Controller
     {
         //
         $fotoLama = Transaksi::select('bukti_bayar')->where('id', $id)->get();
-        foreach($fotoLama as $f1){
+        foreach ($fotoLama as $f1) {
             $fotoLama = $f1->bukti_bayar;
         }
         //jika foto sudah ada yang terupload 
-        if(!empty($request->bukti_bayar)){
+        if (!empty($request->bukti_bayar)) {
             //maka proses selanjutnya 
-        if(!empty($fotoLama->bukti_bayar)) unlink(public_path('admin/image'.$fotoLama->bukti_bayar));
-        //proses ganti foto
-            $fileName = 'foto-' .$request->id.'.'.$request->bukti_bayar->extension();
+            if (!empty($fotoLama->bukti_bayar)) unlink(public_path('admin/image' . $fotoLama->bukti_bayar));
+            //proses ganti foto
+            $fileName = 'foto-' . $request->id . '.' . $request->bukti_bayar->extension();
             //setelah tau fotonya sudah masuk maka tempatkan ke public
             $request->bukti_bayar->move(public_path('admin/image'), $fileName);
-        } else{
+        } else {
             $fileName = $fotoLama;
         }
 
-         $transaksi = Transaksi::find($id);
-         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
-         $transaksi->metode_pembayaran = $request->metode_pembayaran;
-         $transaksi->total_biaya = $request->total_biaya;
-         $pemesanan->bukti_bayar = $fileName;
-         $pemesanan->save();
-         return redirect('admin/transaksi');
+        $transaksi = Transaksi::find($id);
+        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+        $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        $transaksi->total_biaya = $request->total_biaya;
+        $transaksi->bukti_bayar = $fileName;
+        $transaksi->save();
+        return redirect('admin/transaksi');
     }
 
     /**
