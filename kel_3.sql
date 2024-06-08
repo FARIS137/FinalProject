@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jun 2024 pada 04.38
+-- Waktu pembuatan: 06 Jun 2024 pada 10.58
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -118,7 +118,8 @@ INSERT INTO `layanan` (`id`, `jenis_layanan`, `harga`, `deskripsi`, `created_at`
 (1, 'Regular', 55000, 'Meliputi pencucian eksterior, pembersihan interior & semir ban', '2024-05-16 08:08:09'),
 (2, 'Drywash', 75000, 'Meliputi pencucian eksterior, pembersihan interior & semir ban dengan penggunaan minim air yang diperuntukkan bagi apartemen, ruko & perkantoran', '2024-05-16 08:08:19'),
 (3, 'Medium', 125000, 'Meliputi pencucian eksterior, pembersihan interior, semir ban, wax & perawatan kaca mobil', '2024-05-16 08:08:28'),
-(4, 'Complete', 220000, 'Meliputi pencucian eksterior, pembersihan interior, semir ban, wax, perawatan kaca mobil & mesin mobil', '2024-05-16 08:08:38');
+(4, 'Complete', 220000, 'Meliputi pencucian eksterior, pembersihan interior, semir ban, wax, perawatan kaca mobil & mesin mobil', '2024-05-16 08:08:38'),
+(16, 'HumanShower', 400000, 'pemandian air panass selamanya', '2024-06-04 14:59:44');
 
 -- --------------------------------------------------------
 
@@ -188,6 +189,31 @@ INSERT INTO `pemesanan` (`id`, `tanggal_awal_booking`, `jam_awal_booking`, `cata
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `hak_akses` enum('admin','pelanggan') NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `pengguna`
+--
+
+INSERT INTO `pengguna` (`id`, `username`, `password`, `email`, `hak_akses`, `foto`) VALUES
+(1, 'admin1', 'adminpass1', 'admin1@example.com', 'pelanggan', 'foto-.png'),
+(2, 'admin2', 'adminpass2', 'admin2@example.com', 'admin', ''),
+(3, 'pelanggan1', 'passpelanggan1', 'pelanggan1@example.com', 'pelanggan', ''),
+(4, 'pelanggan2', 'passpelanggan2', 'pelanggan2@example.com', 'pelanggan', '');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `sessions`
 --
 
@@ -205,12 +231,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('iCS5UPeTt9fCmeQt35e7spxFBPvMQyFtuSBqhEZ3', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoieEhHbUcwcHFLb09qRmJxczFGUFk3Zkh5eU1RV1o1RTNmclA3NE9nZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi91c2VyIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTczMTQwMjg7fXM6NToiYWxlcnQiO2E6MDp7fX0=', 1717314154),
-('L2st8keN1bzVteUS0XHEsi2SmHAu3s4OUEvrjPJS', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNGFLWWtCUTNrNzVweGJPZ1NsSElyc2c1eUU4ZHZIaUR0Mmh4VUhWNiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9maWxlIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTc0MTA2NzU7fX0=', 1717410770),
-('M16zyQzyBnjnS3IO6VVVzWtOuZDDAbKAuX8uD91C', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYUNPYTNvakQ4eG9rZHRLOVpiRWs3YVl0enl5M2R0UDdjRVhEOUlIQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9maWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTczMzE2ODM7fX0=', 1717331693),
-('uFRIuzhoYdx6rAfv81XUgwQkqcAEMsrvIZ9sX30n', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNmQ0WTB3cGtBcHRVeXZnQ1pPeGoxTm8xWE10QjQyN1dkRVBtMEwxOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9maWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTczMzIzNjY7fX0=', 1717333830),
-('VIUvZKhEpuaheDUQKMBLk8HZnYcNb0tfw8zr2lZK', 6, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaThSM0UxckhkcUp3cWQ2S1dHRmk3Q3A2ZmVOdW5oQTBPNTV5dlhGYiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi91c2VyIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NjtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTczMTA3OTk7fX0=', 1717311470),
-('xDTNpHqSSDLE8Vrw2q5jC9LqYvCdCGr7GYK5Jr0H', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiT2NMemc1bUk1NVM4TWpPTjBvWkVJZGxHMGZudmZjZkdKbnRhYThYaCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9maWxlIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTczMTc3NTY7fX0=', 1717317761);
+('rSQwi8oZcuNZFLb272XU90ERPeemP5Vy6YtkcGWF', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiN3lScldHVmhxck1wYkpWZDFmNzVJek1JckZBQmsxT2g3YklCOWRrNCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MzA6e2k6MDtzOjE4OiJhbGVydC5jb25maWcudGl0bGUiO2k6MTtzOjE3OiJhbGVydC5jb25maWcudGV4dCI7aToyO3M6MTg6ImFsZXJ0LmNvbmZpZy50aW1lciI7aTozO3M6MjM6ImFsZXJ0LmNvbmZpZy5iYWNrZ3JvdW5kIjtpOjQ7czoxODoiYWxlcnQuY29uZmlnLndpZHRoIjtpOjU7czoyMzoiYWxlcnQuY29uZmlnLmhlaWdodEF1dG8iO2k6NjtzOjIwOiJhbGVydC5jb25maWcucGFkZGluZyI7aTo3O3M6MzA6ImFsZXJ0LmNvbmZpZy5zaG93Q29uZmlybUJ1dHRvbiI7aTo4O3M6Mjg6ImFsZXJ0LmNvbmZpZy5zaG93Q2xvc2VCdXR0b24iO2k6OTtzOjMwOiJhbGVydC5jb25maWcuY29uZmlybUJ1dHRvblRleHQiO2k6MTA7czoyOToiYWxlcnQuY29uZmlnLmNhbmNlbEJ1dHRvblRleHQiO2k6MTE7czoyOToiYWxlcnQuY29uZmlnLnRpbWVyUHJvZ3Jlc3NCYXIiO2k6MTI7czoyNDoiYWxlcnQuY29uZmlnLmN1c3RvbUNsYXNzIjtpOjEzO3M6MTc6ImFsZXJ0LmNvbmZpZy5pY29uIjtpOjE0O3M6MTI6ImFsZXJ0LmNvbmZpZyI7aToxNTtzOjE4OiJhbGVydC5jb25maWcudGl0bGUiO2k6MTY7czoxNzoiYWxlcnQuY29uZmlnLnRleHQiO2k6MTc7czoxODoiYWxlcnQuY29uZmlnLnRpbWVyIjtpOjE4O3M6MjM6ImFsZXJ0LmNvbmZpZy5iYWNrZ3JvdW5kIjtpOjE5O3M6MTg6ImFsZXJ0LmNvbmZpZy53aWR0aCI7aToyMDtzOjIzOiJhbGVydC5jb25maWcuaGVpZ2h0QXV0byI7aToyMTtzOjIwOiJhbGVydC5jb25maWcucGFkZGluZyI7aToyMjtzOjMwOiJhbGVydC5jb25maWcuc2hvd0NvbmZpcm1CdXR0b24iO2k6MjM7czoyODoiYWxlcnQuY29uZmlnLnNob3dDbG9zZUJ1dHRvbiI7aToyNDtzOjMwOiJhbGVydC5jb25maWcuY29uZmlybUJ1dHRvblRleHQiO2k6MjU7czoyOToiYWxlcnQuY29uZmlnLmNhbmNlbEJ1dHRvblRleHQiO2k6MjY7czoyOToiYWxlcnQuY29uZmlnLnRpbWVyUHJvZ3Jlc3NCYXIiO2k6Mjc7czoyNDoiYWxlcnQuY29uZmlnLmN1c3RvbUNsYXNzIjtpOjI4O3M6MTc6ImFsZXJ0LmNvbmZpZy5pY29uIjtpOjI5O3M6MTI6ImFsZXJ0LmNvbmZpZyI7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9maWxlIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTc1MjA3NzE7fXM6NToiYWxlcnQiO2E6MDp7fX0=', 1717520778);
 
 -- --------------------------------------------------------
 
@@ -279,11 +300,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `verified_at`, `password`, `remember_token`, `role`, `foto`, `is_active`, `created_at`, `updated_at`) VALUES
 (2, 'Jane Smith', 'jane@example.com', '2023-01-02 04:00:00', '$2y$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', NULL, 'manager', '', 0, '2024-05-30 01:51:13', '2024-05-30 01:51:13'),
 (4, 'Bob Brown', 'bob@example.com', '2023-01-04 02:30:00', '$2y$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', NULL, 'pelanggan', '', 0, '2024-05-30 01:51:13', '2024-05-30 01:51:13'),
-(5, 'Muhammad Faris', 'linklur09@gmail.com', NULL, '$2y$12$BgbIQSlL/uhiroQ.ra7.oufe2jsLPNaO/IVJnWPac28G9V1o9BIIa', NULL, 'admin', '', 0, '2024-05-29 18:54:14', '2024-05-29 18:54:14'),
+(5, 'Muhammad Faris', 'linklur09@gmail.com', NULL, '$2y$12$BgbIQSlL/uhiroQ.ra7.oufe2jsLPNaO/IVJnWPac28G9V1o9BIIa', NULL, 'admin', '', 1, '2024-05-29 18:54:14', '2024-06-04 09:55:56'),
 (6, 'maman', 'maman@gmail.com', NULL, '$2y$12$4251diSYRidw45D.bhtMg.N5I94MlY5UFR/hOWkcio3tSHO.ZVRea', NULL, 'admin', '', 1, '2024-05-30 06:34:02', '2024-06-02 00:40:41'),
-(7, 'ais', 'ais@gmail.com', NULL, '$2y$12$88ZsFrv2a1nKcT3d/GVjV.F/qToXIEz4UEBCvwLZAAiYaYkBBHA/O', NULL, 'admin', '', 1, '2024-06-01 03:34:12', '2024-06-01 03:34:12'),
-(8, 'abu', 'abu@gmail.com', NULL, '$2y$12$r9f8LnKZ8SrzueQYRU2EROkGW1D.sHUci6OFh5yzaiEpIQcAyTWPe', NULL, 'pelanggan', NULL, 1, '2024-06-02 01:18:21', '2024-06-02 01:20:55'),
-(9, 'mamas', 'mamas@gmail.com', NULL, '$2y$12$mksrb4fFvHHHD0g.lgWkFOeaPy.bxhZqPycsdnPO03caT3h4qcE6e', NULL, 'pelanggan', NULL, 0, '2024-06-03 03:30:36', '2024-06-03 03:30:36');
+(7, 'ais', 'ais@gmail.com', NULL, '$2y$12$8/ZsNLS8ykX7h/SImpgsMerzAb6riwllGpAxZEr76NG3GvQvgpGNC', NULL, 'admin', 'foto-665f475521cdeWhatsApp Image 2024-05-20 at 08.59.17.jpeg', 1, '2024-06-01 03:34:12', '2024-06-04 09:56:53'),
+(8, 'abu', 'abu@gmail.com', NULL, '$2y$12$r9f8LnKZ8SrzueQYRU2EROkGW1D.sHUci6OFh5yzaiEpIQcAyTWPe', NULL, 'staff', NULL, 1, '2024-06-02 01:18:21', '2024-06-02 01:20:55'),
+(10, 'halo', 'halo@gmail.com', NULL, '$2y$12$s.HodpPCee6KR6TRwi/LkeOwNlOOBqRx4oyzJoJsQbiPgVhgWQmei', NULL, 'pelanggan', NULL, 0, '2024-06-04 10:00:20', '2024-06-04 10:00:20');
 
 --
 -- Indexes for dumped tables
@@ -346,6 +367,12 @@ ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `sessions`
 --
 ALTER TABLE `sessions`
@@ -394,7 +421,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT untuk tabel `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -407,6 +434,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `pemesanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `staff`
@@ -424,7 +457,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
