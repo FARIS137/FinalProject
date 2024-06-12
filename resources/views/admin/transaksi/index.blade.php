@@ -36,6 +36,8 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
+
+                                            <th>Nama Pelanggan</th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
@@ -45,6 +47,7 @@
                                     </thead>
                                     <tfoot>
                                             <th>No</th>
+                                            <th>Nama Pelanggan</th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
@@ -56,6 +59,7 @@
                                         @foreach($transaksi as $t)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
+                                            <td>{{$t->pemesanan->customer_name}}</td>
                                             <td>{{$t->tanggal_transaksi}}</td>
                                             <td>{{$t->metode_pembayaran}}</td>
                                             <td>{{$t->bukti_bayar}}</td>

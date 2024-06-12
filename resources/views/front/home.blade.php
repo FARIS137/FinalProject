@@ -10,9 +10,9 @@
                     <div class="container">
                         <div class="row align-items-center justify-content-center justify-content-lg-start">
                             <div class="col-10 col-lg-7 text-center text-lg-start">
-                                <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Car Servicing //</h6>
-                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Qualified Car Wash Service Center</h1>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
+                             
+                                <h1 class="display-3 text-white mb-3 pb-2 animated slideInDown" style="font-size: 2rem">Sibuk dan tidak punya waktu untuk antri? Coba layanan cuci mobil kami! Dijamin auto bersih dan mengkilap tanpa repot!</h1>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Booking <i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                             <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                 <img class="img-fluid" src="{{asset('front')}}/assets/img/carousel-2.png" alt="">
@@ -30,15 +30,15 @@
 
 <!-- Service Start -->
 <div class="container-xxl py-5">
+    <h2 class="text-center mb-5" style="font-size: 2rem;">Kenapa Harus Steam di Kami?</h2>
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="d-flex py-5 px-4">
-                    <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
+                    <i class="fa fa-money-bill-wave fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
-                        <h5 class="mb-3">Quality Servicing</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <h5 class="mb-3">Harga Terjangkau</h5>
+                        <p>Steam mobil dengan harga bersahabat! Pilih dari berbagai paket kami yang sesuai dengan kebutuhan dan anggaran Anda.</p>
                     </div>
                 </div>
             </div>
@@ -46,9 +46,8 @@
                 <div class="d-flex bg-light py-5 px-4">
                     <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
-                        <h5 class="mb-3">Expert Workers</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <h5 class="mb-3">Aplikasi Mudah Diakses</h5>
+                        <p>Memudahkan para user yang ingin menggunakan aplikasi dan pelayanannya ramah.</p>
                     </div>
                 </div>
             </div>
@@ -56,9 +55,8 @@
                 <div class="d-flex py-5 px-4">
                     <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
-                        <h5 class="mb-3">Modern Equipment</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <h5 class="mb-3">Teknik yang Efisien</h5>
+                        <p>Pembersihan yang efisien untuk menghemat waktu Anda, namun tetap memberikan hasil yang berkualitas.</p>
                     </div>
                 </div>
             </div>
@@ -66,6 +64,8 @@
     </div>
 </div>
 <!-- Service End -->
+
+
 
 
 <!-- About Start -->

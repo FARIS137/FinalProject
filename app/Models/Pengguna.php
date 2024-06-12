@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class layanan extends Model
+class Pengguna extends Model
 {
     use HasFactory;
-    protected $table = 'layanan';
+    protected $table = 'pengguna';
 
-    protected $fillable = ['jenis_layanan', 'harga', 'deskripsi'];
+    protected $fillable = ['username', 'password', 'email' ,'hak_akses'];
     public $timestamps = false;
 
     public function pemesanan (){
-        return $this->belongsTo(Pemesanan::class);
+        return $this->haveMany(Pemesanan::class);
     }
 }

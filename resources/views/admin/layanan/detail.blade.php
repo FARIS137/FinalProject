@@ -1,13 +1,21 @@
 @extends('admin.layouts.app')
 @section('konten')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <style>
+   
     body{
     background:#f5f5f5;
-    margin-top:20px;}
-/------- portfolio -------/
+    margin:auto;
+    width: 50%
+text-align: center;
+}
+
+/*------- portfolio -------*/
 .project {
-  margin: 15px 0;
+  margin: auto;
+  width: 500px;
+  background-image: url() 
 }
 
 .no-gutter .project {
@@ -409,25 +417,24 @@ p {
 b, strong {
     font-weight: 700 !important;
 }
-.row{
-    justify-content:center;
+.row {
+  justify-content: center;
 }
 </style>
-
 <div class="container">
     <br>
     <div class="row">
         <div class="col-md-5">
             <div class="project-info-box mt-0">
-                <h5>DETAILS Layanan</h5>
+                <h5>DETAILS LAYANAN</h5>
                 <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto asperiores error autem, dignissimos quibusdam repudiandae libero nam recusandae voluptatibus..</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
                 <p><b>Jenis Layanan:</b> {{ $layanan->jenis_layanan }}</p>
-                <p><b>Jam Booking:</b> {{ $layanan->harga }}</p>
-                <p><b>Catatan:</b> {{ $layanan->deskripsi }}</p>
-                
+                <p><b>Harga:</b> {{ $layanan->harga }}</p>
+                <p><b>Deskripsi:</b> {{ $layanan->deskripsi }}</p>
+               
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">
@@ -441,9 +448,7 @@ b, strong {
             </div><!-- / project-info-box -->
         </div><!-- / column -->
 
-       
     </div>
 </div>
-
 
 @endsection

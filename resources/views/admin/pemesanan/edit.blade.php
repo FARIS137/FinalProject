@@ -19,7 +19,7 @@ enctype="multipart/form-data">
     <div class="col-8">
       <input id="text1" name="jam_awal_booking" type="time" class="form-control"  value="{{$ps->jam_awal_booking}}" >
     </div>
-    </div>
+  </div>
     <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Catatan</label> 
     <div class="col-8">
@@ -57,12 +57,11 @@ enctype="multipart/form-data">
     <label for="select" class="col-4 col-form-label">Layanan</label> 
     <div class="col-8">
       <select id="select" name="layanan_id" class="custom-select">
-        @foreach($layanan as $l)
-        <option value="{{$l->id}}" {{ $ps->layanan_id == $l->id ? 'selected' : '' }}>{{$l->jenis_layanan}}</option>
-        @endforeach  
+        @foreach($layanan as $l )
+        <option value="{{$l->id}}">{{$l->jenis_layanan}}</option>
+        @endforeach
       </select>
     </div>
-  </div>
   </div>
 
   <div class="form-group row">

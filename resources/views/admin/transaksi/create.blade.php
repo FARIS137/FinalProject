@@ -7,12 +7,20 @@
 <form method="POST" action="{{route('transaksi.store')}}" enctype="multipart/form-data">
     @csrf
 
+    <div class="form-group row">
+      <label for="pemesanan_id" class="col-4 col-form-label">Nama Pelanggan</label> 
+      <div class="col-8">
+        <input id="total_biaya" name="pemesanan_id" type="text" class="form-control">
+      </div>
+    </div>
   <div class="form-group row">
     <label for="tanggal_transaksi" class="col-4 col-form-label">Tanggal Transaksi</label> 
     <div class="col-8">
       <input id="tanggal_transaksi" name="tanggal_transaksi" type="date" class="form-control">
     </div>
   </div>
+  
+ 
   <div class="form-group row">
     <label for="metode_pembayaran" class="col-4 col-form-label">Metode Pembayaran</label> 
     <div class="col-8">
@@ -37,7 +45,7 @@
       <input id="total_biaya" name="total_biaya" type="text" class="form-control">
     </div>
   </div>
- 
+  
   <div class="form-group row">
     <div class="offset-4 col-8">
       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
