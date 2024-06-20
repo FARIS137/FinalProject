@@ -14,7 +14,6 @@ class PemesananController extends Controller
     {
         //
         $pemesanan = Pemesanan::all();
-
         return view('admin.pemesanan.index', compact('pemesanan'));
     }
 

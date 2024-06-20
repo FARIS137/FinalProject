@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
+use App\Models\Pemesanan;
+
+
 
 
 class TransaksiController extends Controller
@@ -21,9 +24,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
-        $transaksi = Transaksi::all();
-        return view('admin.transaksi.create', compact('transaksi'));
+        $pemesanan = Pemesanan::all();
+        return view('admin.transaksi.create', compact('pemesanan'));
     }
 
     /**
@@ -43,6 +45,8 @@ class TransaksiController extends Controller
         $transaksi = new Transaksi;
         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
         $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        $transaksi->pemesanan_id = $request->pemesanan_id;
+
         // Handle file upload for bukti_bayar
         if ($request->hasFile('bukti_bayar')) {
             $fileName = 'foto-' . time() . '.' . $request->bukti_bayar->extension();
@@ -102,6 +106,7 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($id);
         $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
         $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        $transaksi->pemesanan_id = $request->pemesanan_id;
         $transaksi->total_biaya = $request->total_biaya;
         $transaksi->bukti_bayar = $fileName;
         $transaksi->save();

@@ -95,7 +95,7 @@ p {
                 @endempty
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
-                        <h3 class="h4 mb-0">{{$pengguna->nama}} </h3>
+                        <h3 class="h4 mb-0">{{$pengguna->name}} </h3>
                     </div>
                     <ul class="list-unstyled mb-4">
                         <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{$pengguna->email}} </a></li>

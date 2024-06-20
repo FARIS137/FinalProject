@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'role',
         'is_active',
+        
     ];
     public function role(string $role): bool
     {
@@ -49,5 +50,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function pengguna()
+    {
+        return $this->hasOne(Pengguna::class, 'user_id');
     }
 }

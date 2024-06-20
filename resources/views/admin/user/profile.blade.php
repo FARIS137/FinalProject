@@ -105,7 +105,7 @@
 									 @enderror
 								</div>
 							</div>
-							<div class="row mb-3">
+							<div class="row mb-3">/
 								<div class="col-sm-3">
 									<h6 class="mb-0">Confirm Password</h6>
 								</div>
