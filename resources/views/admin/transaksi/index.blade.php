@@ -57,7 +57,7 @@
                                     <tbody>
                                         
                                         @foreach($transaksi as $t)
-                                        <tr>
+                                        <tr>    
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$t->pemesanan->customer_name}}</td>
                                             <td>{{$t->tanggal_transaksi}}</td>

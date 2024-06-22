@@ -1157,8 +1157,14 @@ progress {
         width: 41.66667%;
     }
     .col-lg-6 {
-        flex: 0 0 auto;
         width: 50%;
+    }
+    .col-lg-66 {
+        width: 100%;
+        margin: 0 0 auto;
+    }
+    label{
+        color: #000;
     }
     .col-lg-7 {
         flex: 0 0 auto;
@@ -6825,7 +6831,7 @@ fieldset:disabled .btn {
     color: inherit !important;
 }
 .bg-primary {
-    background-color: #d81324 !important;
+    background-color: #ed8e97;
 }
 .bg-secondary {
     background-color: #0b2154 !important;

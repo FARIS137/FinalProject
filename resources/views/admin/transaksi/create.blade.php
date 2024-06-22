@@ -10,7 +10,7 @@
     <div class="form-group row">
       <label for="pemesanan_id" class="col-4 col-form-label">Nama Pelanggan</label> 
       <div class="col-8">
-        <input id="total_biaya" name="pemesanan_id" type="text" class="form-control">
+        <input id="pemesanan_id" name="pemesanan_id" type="text" class="form-control">
       </div>
     </div>
   <div class="form-group row">

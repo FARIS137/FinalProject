@@ -125,7 +125,6 @@
 
 @media (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
-      
       border: none;
       margin-top: 0;
       top: 150%;
@@ -219,7 +218,7 @@
 
 /*** Booking ***/
 .booking {
-  background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/carousel-bg-2.jpg) center center no-repeat;
+  /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/carousel-bg-2.jpg) center center no-repeat; */
   background-size: cover;
 }
 
@@ -314,7 +313,7 @@
 
 /*** Footer ***/
 .footer {
-  background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9)), url(../img/carousel-bg-1.jpg) center center no-repeat;
+  background: linear-gradient(rgba(206, 73, 73, 0.9), rgba(206, 73, 73, 0.9))center center no-repeat;
   background-size: cover;
 }
 
@@ -380,4 +379,8 @@
   margin-right: 0;
   padding-right: 0;
   border-right: none;
+}
+
+.label{
+  color: black;
 }

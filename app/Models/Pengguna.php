@@ -10,10 +10,22 @@ class Pengguna extends Model
     use HasFactory;
     protected $table = 'pengguna';
 
-    protected $fillable = ['username', 'password', 'email' ,'hak_akses'];
+    protected $fillable = [  // Foreign key to User
+    'name', 
+    'username', 
+    'phone', 
+    'address', 
+    'email', 
+    'password', ];
     public $timestamps = false;
 
-    public function pemesanan (){
+    public function pemesanan()
+    {
         return $this->haveMany(Pemesanan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

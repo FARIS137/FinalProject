@@ -1,0 +1,153 @@
+/* public/css/Pembayaran.css */
+
+.pembayaran-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+}
+
+.metode-pembayaran {
+    width: 45%;
+}
+
+.timer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+}
+
+.method {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.method.selected {
+    background-color: #e0f7fa;
+    border-color: #00796b;
+}
+
+.lanjutkan-button {
+    display: block;
+    background-color: #ff9800;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.rincian-tiket {
+    width: 45%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.centang-biru img {
+    width: 150px;
+}
+.pembayaran-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.logo {
+    text-align: center;
+    width: 100%;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.rincian-tiket, .rincian-harga-tiket {
+    width: 45%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.judul-tiket h3, .rincian-harga-tiket h2 {
+    margin-top: 0;
+}
+
+.detail-tiket, .info-pribadi, .total-pembayaran {
+    margin-bottom: 10px;
+}
+
+.btn-konfirmasi {
+    display: block;
+    background-color: #ff9800;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
