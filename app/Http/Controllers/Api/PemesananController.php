@@ -101,7 +101,7 @@ class PemesananController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $pemesanan = Produk::whereId($id)->update([
+        $pemesanan = Pemesanan::whereId($id)->update([
             'tanggal_awal_booking' => $request->tanggal_awal_booking,
             'jam_awal_booking' => $request->jam_awal_booking,
             'catatan' => $request->catatan,
