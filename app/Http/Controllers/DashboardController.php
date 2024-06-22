@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Layanan;
 use App\Models\Pemesanan;
+use App\Models\Pengguna;
 use App\Models\Transaksi;
-use App\Models\Users; // Make sure the model name is correct (User instead of Users)
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $layanan = Layanan::count();
         $pemesanan = Pemesanan::count();
         $transaksi = Transaksi::count();
-        $users = Users::count();
+        $pengguna = Pengguna::count();
         $pemesananData = Pemesanan::select('tanggal_awal_booking', 'layanan_id')->get();
 
         $jenis_mobil = DB::table('pemesanan')
@@ -24,6 +24,6 @@ class DashboardController extends Controller
             ->groupBy('jenis_mobil')
             ->get();
 
-        return view('admin.dashboard', compact('layanan', 'pemesanan', 'pemesananData', 'transaksi', 'users', 'jenis_mobil'));
+        return view('admin.dashboard', compact('layanan', 'pemesanan', 'pemesananData', 'transaksi', 'pengguna', 'jenis_mobil'));
     }
 }

@@ -39,9 +39,9 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Data Users : {{$users}}</div>
+                                    <div class="card-body">Data Users : {{$pengguna}}</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="{{url('admin/users')}}">
+                                        <a class="small text-white stretched-link" href="{{url('admin/pengguna')}}">
                                             View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
@@ -53,7 +53,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        steam layanan chart
+                                        Area Chart Example
                                     </div>
                                     <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Jenis Mobil Chart
+                                        Pie Chart Example
                                     </div>
                                     <div class="card-body"><canvas id="myPieChart" width="80%" height="20"></canvas></div>
                                 </div>
@@ -75,13 +75,13 @@
 // Chart.defaults.global.defaultFontColor = '#292b2c';
 
 var pemesananData = @json($pemesananData);
-//kodingan diatas memanggil variable pemesananData yang dikirim compact dari
+//podingan diatas memanggil variable produkData yang dikirim compact dari 
 //DashboardController
 //json mengubah data dari data array ke json untuk dideklarasikan ke javascript
 var labels = pemesananData.map(function(item){
-    return item.tanggal_awal_booking;
+    return item.tanggal_awal_booking; 
 });
-//var labels mendeklarasikan data yang mengambil kolom kode
+//var labels mendeklarasikan data yang mengambil kolom kode 
 var data = pemesananData.map(function(item){
     return item.layanan_id;
 //map ada fungsi untuk mengurutkan data
@@ -94,7 +94,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: labels,
     datasets: [{
-      label: "Layanan",
+      label: "layanan",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",

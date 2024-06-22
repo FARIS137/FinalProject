@@ -1,16 +1,22 @@
 @extends('admin.layouts.app')
-
 @section('konten')
+
 <div class="container-fluid px-4">
     <h1 class="mt-4">Pemesanan</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('admin') }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Tables</li>
     </ol>
     <div class="card mb-4">
+        <div class="card-body">
+            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.
+        </div>
+    </div>
+    <div class="card mb-4">
         <div class="card-header">
             <a href="{{ route('pemesanan.create') }}" class="btn btn-md btn-primary">
-                <i class="fa-solid fa-square-plus"></i> Add Pemesanan
+                <i class="fa-solid fa-square-plus"></i> Add New Booking
             </a>
         </div>
         <div class="card-body">
@@ -32,7 +38,7 @@
                 table#datatablesSimple td:nth-child(8) { width: 10%; } /* Layanan */
                 table#datatablesSimple td:nth-child(9) { width: 15%; } /* Action */
             </style>
-            <table id="datatablesSimple" class="table table-striped table-bordered">
+            <table id="datatablesSimple">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -43,7 +49,7 @@
                         <th>NoPlat Mobil</th>
                         <th>Nama Pelanggan</th>
                         <th>Layanan</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -56,7 +62,7 @@
                         <th>NoPlat Mobil</th>
                         <th>Nama Pelanggan</th>
                         <th>Layanan</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -71,40 +77,38 @@
                         <td>{{ $p->customer_name }}</td>
                         <td>{{ $p->layanan->jenis_layanan }}</td>
                         <td>
-                            <a href="{{ route('pemesanan.show', $p->id) }}" class="btn btn-sm btn-success">
+                            <a href="{{ route('pemesanan.show', $p->id) }}"
+                                class="btn btn-sm btn-success">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="{{ route('pemesanan.edit', $p->id) }}" class="btn btn-sm btn-warning">
+                            <a href="{{route('pemesanan.edit', $p->id)}}"
+                                class="btn btn-sm btn-warning">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal{{ $p->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Pemesanan</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin akan menghapus data {{ $p->customer_name }}?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <form action="{{ route('pemesanan.destroy', $p->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{ $p->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Pemesanan</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin akan menghapus data {{ $p->customer_name }}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <form action="{{ route('pemesanan.destroy', $p->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -112,4 +116,5 @@
         </div>
     </div>
 </div>
+
 @endsection

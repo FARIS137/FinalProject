@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
-use App\Models\Users;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-class UsersController extends Controller
+class PenggunaController extends Controller
 {
     //
     public function index()
     {
         //
-        $users = Users::all();
-        return view('admin.users.index', compact('users'));
+        $pengguna = Pengguna::all();
+        return view('admin.pengguna.index', compact('pengguna'));
     }
 
     /**
@@ -23,8 +23,8 @@ class UsersController extends Controller
     public function create()
     {
         //
-        $users = Users::all()->unique('hak_akses');
-        return view('admin.users.create', compact('users'));
+        $pengguna = Pengguna::all()->unique('hak_akses');
+        return view('admin.pengguna.create', compact('pengguna'));
     }
 
     /**
@@ -38,8 +38,8 @@ class UsersController extends Controller
         $request->validate(
             [
                 'username' => 'required|max:50',
-                'password' => 'required|unique:users|max:10',
-                'email' => 'required|unique:users',
+                'password' => 'required|unique:pengguna|max:10',
+                'email' => 'required|unique:pengguna',
                 'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'hak_akses' => 'required'
             ],
@@ -59,14 +59,14 @@ class UsersController extends Controller
         );
 
 
-        $users = new Users;
-        $users->username = $request->username;
-        $users->password = $request->password;
-        $users->email = $request->email;
-        $users->hak_akses = $request->hak_akses;
-        $users->save();
+        $pengguna = new Pengguna;
+        $pengguna->username = $request->username;
+        $pengguna->password = $request->password;
+        $pengguna->email = $request->email;
+        $pengguna->hak_akses = $request->hak_akses;
+        $pengguna->save();
         Alert::success('Tambah User', 'Berhasil Tambah User');
-        return redirect('admin/users');
+        return redirect('admin/pengguna');
     }
 
     /**
@@ -75,8 +75,8 @@ class UsersController extends Controller
     public function show(string $id)
     {
         //
-        $users = Users::find($id);
-        return view('admin.users.detail', compact('users'));
+        $pengguna = Pengguna::find($id);
+        return view('admin.pengguna.detail', compact('pengguna'));
     }
 
     /**
@@ -85,9 +85,9 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         //
-        $us = Users::find($id);
-        $users = Users::all()->unique('hak_akses');
-        return view('admin.users.edit', compact('us', 'users'));
+        $us = Pengguna::find($id);
+        $pengguna = Pengguna::all()->unique('hak_akses');
+        return view('admin.pengguna.edit', compact('us', 'pengguna'));
     }
 
     /**
@@ -97,7 +97,7 @@ class UsersController extends Controller
     {
         //
         //foto lama
-        $fotoLama = Users::select('foto')->where('id', $id)->get();
+        $fotoLama = Pengguna::select('foto')->where('id', $id)->get();
         foreach ($fotoLama as $f1) {
             $fotoLama = $f1->foto;
         }
@@ -113,15 +113,15 @@ class UsersController extends Controller
             $fileName = $fotoLama;
         }
         //tambah data menggunakan eloquent
-        $users = Users::find($id);
-        $users->username = $request->username;
-        $users->password = $request->password;
-        $users->email = $request->email;
-        $users->hak_akses = $request->hak_akses;
-        $users->foto = $fileName;
-        $users->save();
+        $pengguna = Pengguna::find($id);
+        $pengguna->username = $request->username;
+        $pengguna->password = $request->password;
+        $pengguna->email = $request->email;
+        $pengguna->hak_akses = $request->hak_akses;
+        $pengguna->foto = $fileName;
+        $pengguna->save();
         Alert::success('Update User', 'Berhasil Update User');
-        return redirect('admin/users');
+        return redirect('admin/pengguna');
     }
 
     /**
@@ -131,9 +131,9 @@ class UsersController extends Controller
     {
         //
 
-        $users = Users::find($id);
-        $users->delete();
+        $pengguna = Pengguna::find($id);
+        $pengguna->delete();
 
-        return redirect('admin/users');
+        return redirect('admin/pengguna');
     }
 }
