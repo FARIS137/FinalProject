@@ -1,8 +1,7 @@
-
 @extends('admin.layouts.app')
 @section('konten')
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <h1 align="center">Input Layanan</h1><br>
 @if ($errors->any())
@@ -39,9 +38,9 @@ function updateHarga(layanan, harga) {
 </script>
 
 <div class="form-group row">
-  <label for="text1" class="col-4 col-form-label">Deskripsi</label>
+  <label for="text1" class="col-4 col-form-label">Deskripsi</label> 
   <div class="col-8">
-    <input id="text1" name="deskripsi" type="text"
+    <input id="text1" name="deskripsi" type="text" 
     class="form-control  @error('deskripsi') is-invalid @enderror" >
     @error('deskripsi')
     <div class="invalid-feedback">

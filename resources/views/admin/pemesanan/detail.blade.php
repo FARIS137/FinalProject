@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <style>
-
+   
     body{
     background:#f5f5f5;
     margin-top:20px;}
@@ -444,7 +444,7 @@ b, strong {
         </div><!-- / column -->
 
         <div class="col-md-7">
-            @if(empty($pemesanan->foto))
+            @if(empty($pemesanan->foto))    
                 <img src="{{ url('admin/image/nofoto.jpeg') }}" alt="project-image" class="rounded">
             @else
                 <img src="{{ url('admin/image') }}/{{ $pemesanan->foto }}" alt="project-image" class="rounded">

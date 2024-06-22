@@ -28,7 +28,7 @@
                     Management User
                     </a>
                     @endif
-
+                    
                 </div>
             </div>
             <div class="sb-sidenav-footer">

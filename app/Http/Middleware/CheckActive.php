@@ -6,26 +6,22 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Alert;
 
-class Role
+
+class CheckActive
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $roles): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            abort(403, 'Belum Mempunyai Akun!');
+        if (Auth::check() && !Auth::user()->is_active) {
+            Auth::logout();
+            return redirect('/')->with('error', 'Akun anda belum diaktifkan oleh admin');
         }
-        $roles = explode('|', $roles);
-        $user = Auth::user();
-        foreach ($roles as $role) {
-            if ($user->role($role)) {
-                return $next($request);
-            }
-        }
-        return redirect('/');
+        return $next($request);
     }
 }

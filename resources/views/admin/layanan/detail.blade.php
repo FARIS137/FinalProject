@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <style>
-
+   
     body{
     background:#f5f5f5;
     margin:auto;
@@ -15,7 +15,7 @@ text-align: center;
 .project {
   margin: auto;
   width: 500px;
-  background-image: url()
+  background-image: url() 
 }
 
 .no-gutter .project {
@@ -434,7 +434,7 @@ b, strong {
                 <p><b>Jenis Layanan:</b> {{ $layanan->jenis_layanan }}</p>
                 <p><b>Harga:</b> {{ $layanan->harga }}</p>
                 <p><b>Deskripsi:</b> {{ $layanan->deskripsi }}</p>
-
+               
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">

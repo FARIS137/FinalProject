@@ -29,12 +29,12 @@
                                     table#datatablesSimple th {
                                         font-weight: bold;
                                     }
-                                    table#datatablesSimple td:nth-child(1) { width: 3%; }
-                                    table#datatablesSimple td:nth-child(2) { width: 10%; }
-                                    table#datatablesSimple td:nth-child(3) { width: 7%; }
-                                    table#datatablesSimple td:nth-child(4) { width: 10%; }
-                                    table#datatablesSimple td:nth-child(5) { width: 10%; }
-
+                                    table#datatablesSimple td:nth-child(1) { width: 3%; } 
+                                    table#datatablesSimple td:nth-child(2) { width: 10%; } 
+                                    table#datatablesSimple td:nth-child(3) { width: 7%; } 
+                                    table#datatablesSimple td:nth-child(4) { width: 10%; } 
+                                    table#datatablesSimple td:nth-child(5) { width: 10%; } 
+                    
                                 </style>
                                 <table id="datatablesSimple">
                                     <thead>
@@ -54,7 +54,7 @@
                                             <th>Action</th>
                                     </tfoot>
                                     <tbody>
-
+                                        
                                         @foreach($layanan as $l)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
@@ -62,14 +62,14 @@
                                             <td>{{$l->harga}}</td>
                                             <td>{{$l->deskripsi}}</td>
                                             <td>
-                                              <a href="{{ route('layanan.show', $l->id) }}"
+                                              <a href="{{ route('layanan.show', $l->id) }}" 
                                                 class="btn btn-sm btn-success">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
                                             <a href="{{route('layanan.edit', $l->id)}}"
                                               class="btn btn-sm btn-warning">
                                               <i class="fa-solid fa-pen-to-square"></i>
-                                          </a>
+                                          </a>  
                                           <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $l->id }}">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>

@@ -7,10 +7,10 @@
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
-
+                        
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a href="{{route('transaksi.create')}}"
+                                <a href="{{route('transaksi.create')}}" 
                             class="btn btn-md btn-primary" >
                                 <i class="fa-solid fa-square-plus">
                                 </i> Add Transaksi</a>
@@ -24,18 +24,20 @@
                                     table#datatablesSimple th {
                                         font-weight: bold;
                                     }
-                                    table#datatablesSimple td:nth-child(1) { width: 3%; }
-                                    table#datatablesSimple td:nth-child(2) { width: 10%; }
-                                    table#datatablesSimple td:nth-child(3) { width: 7%; }
-                                    table#datatablesSimple td:nth-child(4) { width: 15%; }
-                                    table#datatablesSimple td:nth-child(5) { width: 10%; }
-                                    table#datatablesSimple td:nth-child(6) { width: 10%; }
-
+                                    table#datatablesSimple td:nth-child(1) { width: 3%; } 
+                                    table#datatablesSimple td:nth-child(2) { width: 10%; }  
+                                    table#datatablesSimple td:nth-child(3) { width: 7%; } 
+                                    table#datatablesSimple td:nth-child(4) { width: 15%; } 
+                                    table#datatablesSimple td:nth-child(5) { width: 10%; } 
+                                    table#datatablesSimple td:nth-child(6) { width: 10%; } 
+                                  
                                 </style>
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                         <th>No</th>
+
+                                            <th>Nama Pelanggan</th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
@@ -45,6 +47,7 @@
                                     </thead>
                                     <tfoot>
                                             <th>No</th>
+                                            <th>Nama Pelanggan</th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Metode Pembayaran</th>
                                             <th>Bukti Bayar</th>
@@ -52,10 +55,11 @@
                                             <th>Action</th>
                                     </tfoot>
                                     <tbody>
-
+                                        
                                         @foreach($transaksi as $t)
-                                        <tr>
+                                        <tr>    
                                             <td>{{$loop->iteration}}</td>
+                                            <td>{{$t->pemesanan->customer_name}}</td>
                                             <td>{{$t->tanggal_transaksi}}</td>
                                             <td>{{$t->metode_pembayaran}}</td>
                                             <td>{{$t->bukti_bayar}}</td>
@@ -67,7 +71,7 @@
                                                 <a href="{{route('transaksi.edit', $t->id)}}"
                                                     class="btn btn-sm btn-warning">
                                                     <i class="fa-solid fa-pen-to-square"></i>
-                                                </a>
+                                                </a>  
                                                 <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $t->id }}">
                                 <i class="fa-solid fa-trash-can"></i>
@@ -91,7 +95,7 @@
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                             </td>
-
+                                            
                                         </tr>
                                         @endforeach
                                     </tbody>

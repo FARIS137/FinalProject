@@ -424,7 +424,7 @@ b, strong {
                 <p><b>Tanggal Transaksi:</b> {{ $transaksi->tanggal_transaksi }}</p>
                 <p><b>Metode Pembayaran:</b> {{ $transaksi->metode_pembayaran }}</p>
                 <p><b>Total Biaya:</b> {{ $transaksi->total_biaya }}</p>
-
+                
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">
@@ -439,7 +439,7 @@ b, strong {
         </div><!-- / column -->
 
         <div class="col-md-7">
-            @if(empty($transaksi->bukti_bayar))
+            @if(empty($transaksi->bukti_bayar))    
                 <img src="{{ url('admin/image/tesla.jpg') }}" alt="project-image" class="rounded">
             @else
                 <img src="{{ url('admin/image') }}/{{ $transaksi->bukti_bayar }}" alt="project-image" class="rounded">

@@ -28,10 +28,30 @@ Route::get('/service', function () {
 Route::get('/contact', function () {
     return view('/front/contact');
 });
+Route::get('/profile', function () {
+    return view('/front/profile');
+});
+Route::get('/transaksi', function () {
+    return view('/front/transaksi');
+});
+Route::get('/pembayaran', function () {
+    return view('/front/pembayaran');
+});
+Route::get('/konfirmasi', function () {
+    return view('/front/konfirmasi');
+});
+
+Route::get('/booking', function () {
+    if (Auth::check()) {
+        return view('/front/booking'); // or the controller action that handles the booking page
+    } else {
+        return redirect('/login');
+    }
+});
 
 //midleware berguna sebagai pembatas atau validasi antara sudah memiliki hak akses dan yg belum
 //prefix adalah pengelompokkan routing  ke satu jenis route
-Route::group(['middleware' => ['auth', 'role:admin|pelanggan']], function () {
+Route::group(['middleware' => ['auth', 'checkActive', 'role:admin|manager|staff']], function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

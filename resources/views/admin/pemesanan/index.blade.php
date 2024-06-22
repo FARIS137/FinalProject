@@ -77,16 +77,16 @@
                         <td>{{ $p->customer_name }}</td>
                         <td>{{ $p->layanan->jenis_layanan }}</td>
                         <td>
-                            <a href="{{ route('pemesanan.show', $p->id) }}"
+                            <a href="{{ route('pemesanan.show', $p->id) }}" 
                                 class="btn btn-sm btn-success">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="{{route('pemesanan.edit', $p->id)}}"
                                 class="btn btn-sm btn-warning">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-
-
+                            </a>  
+                       
+                       
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>

@@ -12,7 +12,7 @@
 								<div class="mt-3">
 									<h4>{{$user->name}}</h4>
 									<p class="text-secondary mb-1">{{$user->role}}</p>
-
+									
 								</div>
 							</div>
 							<hr class="my-4">
@@ -68,7 +68,7 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control @error('email') is-invalid @enderror"
+									<input type="text" class="form-control @error('email') is-invalid @enderror" 
 									name="email" value="{{$user->email}}" require_autocomplete="name">
 									@error('email')
 									 <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
 									<h6 class="mb-0">Old Password</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="password" class="form-control @error('old_password') is-invalid @enderror"
+									<input type="password" class="form-control @error('old_password') is-invalid @enderror" 
 									name="old_password">
 									@error('old_password')
 									 <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
 									<h6 class="mb-0">New Password</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="password" class="form-control @error('password') is-invalid @enderror"
+									<input type="password" class="form-control @error('password') is-invalid @enderror" 
 									name="password">
 									@error('password')
 									 <span class="invalid-feedback" role="alert">
@@ -105,12 +105,12 @@
 									 @enderror
 								</div>
 							</div>
-							<div class="row mb-3">
+							<div class="row mb-3">/
 								<div class="col-sm-3">
 									<h6 class="mb-0">Confirm Password</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="password" class="form-control"
+									<input type="password" class="form-control" 
 									name="password_confirmation">
 								</div>
 							</div>
@@ -119,7 +119,7 @@
 									<h6 class="mb-0">Foto</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="file" class="form-control"
+									<input type="file" class="form-control" 
 									name="foto" value="{{$user->foto}}">
 								</div>
 							</div>
@@ -133,7 +133,7 @@
 								</div>
 							</div>
 							@endif
-
+							
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
@@ -142,7 +142,7 @@
 							</div>
 						</div>
 					</div>
-
+					
 				</div>
 				</form>
 			</div>

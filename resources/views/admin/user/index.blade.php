@@ -10,13 +10,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#"
+            <form action="#" 
             method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="text" class="form-control" name="nama"
                 id="exampleInputEmail1" aria-describedby="emailHelp"
                 placeholder="Tambah Jenis Produk">
-
+               
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -26,7 +26,7 @@
     </div>
   </div>
 </form>
-
+  
   {{-- batas modal --}}
 
 <div class="container-fluid px-4">
@@ -56,7 +56,7 @@
                         <th>Email</th>
                         <th>Role</th>
                         <th>Action</th>
-
+                      
                     </tr>
                 </thead>
                 <tfoot>
@@ -66,11 +66,11 @@
                         <th>Email</th>
                         <th>Role</th>
                         <th>Action</th>
-
+                   
                     </tr>
                 </tfoot>
                 <tbody>
-
+                
                     @foreach ($userAll as $ua)
                     <tr>
                         <td>{{$loop->iteration}} </td>
