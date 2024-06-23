@@ -21,6 +21,21 @@
           </a>
       </div>
                             <div class="card-body">
+                                <style>
+                                    table#datatablesSimple th, table#datatablesSimple td {
+                                        white-space: nowrap;
+                                        padding: 5px;
+                                    }
+                                    table#datatablesSimple th {
+                                        font-weight: bold;
+                                    }
+                                    table#datatablesSimple td:nth-child(1) { width: 3%; } 
+                                    table#datatablesSimple td:nth-child(2) { width: 10%; } 
+                                    table#datatablesSimple td:nth-child(3) { width: 7%; } 
+                                    table#datatablesSimple td:nth-child(4) { width: 10%; } 
+                                    table#datatablesSimple td:nth-child(5) { width: 10%; } 
+                    
+                                </style>
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>

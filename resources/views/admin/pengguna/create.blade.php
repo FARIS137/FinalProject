@@ -15,7 +15,6 @@
 @endif
 <form method="POST" action="{{route('pengguna.store')}}" enctype="multipart/form-data">
     @csrf
-
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Username</label> 
     <div class="col-8">

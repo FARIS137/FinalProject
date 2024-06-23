@@ -24,12 +24,7 @@ class LayananController extends Controller
     {
         //
 
-        $l1 = ['lay' => 'Regular', 'harga' => 55000];
-        $l2 = ['lay' => 'Drywash', 'harga' => 75000];
-        $l3 = ['lay' => 'Medium', 'harga' => 125000];
-        $l4 = ['lay' => 'Complete', 'harga' => 220000];
-        $ar_layanan = [$l1, $l2, $l3, $l4];
-        // $layanan = ['Regular'=> 55000, 'Drywash'=> 75000, 'Medium'=> 125000, 'Complete'=> 220000];
+        $ar_layanan = Layanan::all();
         return view('admin.layanan.create', compact('ar_layanan'));
     }
 
@@ -76,17 +71,10 @@ class LayananController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $la = Layanan::find($id);
-        $l1 = ['lay' => 'Regular', 'harga' => 55000];
-        $l2 = ['lay' => 'Drywash', 'harga' => 75000];
-        $l3 = ['lay' => 'Medium', 'harga' => 125000];
-        $l4 = ['lay' => 'Complete', 'harga' => 220000];
-        $ar_layanan = [$l1, $l2, $l3, $l4];
-        // $layanan = ['Regular'=> 55000, 'Drywash'=> 75000, 'Medium'=> 125000, 'Complete'=> 220000];
-        return view('admin.layanan.edit', compact('la', 'ar_layanan'));
+        $services = Layanan::all(); // Fetch all services
+        return view('admin.layanan.edit', compact('la', 'services'));
     }
-
     /**
      * Update the specified resource in storage.
      */

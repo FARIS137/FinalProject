@@ -31,7 +31,7 @@ Route::get('/contact', function () {
 
 //midleware berguna sebagai pembatas atau validasi antara sudah memiliki hak akses dan yg belum
 //prefix adalah pengelompokkan routing  ke satu jenis route
-Route::group(['middleware' => ['auth', 'role:admin|pelanggan']], function () {
+Route::group(['middleware' => ['auth', 'CheckAktive', 'role:admin|manager|staff']], function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

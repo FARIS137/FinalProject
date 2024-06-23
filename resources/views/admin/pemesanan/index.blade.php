@@ -20,6 +20,24 @@
             </a>
         </div>
         <div class="card-body">
+            <style>
+                table#datatablesSimple th, table#datatablesSimple td {
+                    white-space: nowrap;
+                    padding: 5px;
+                }
+                table#datatablesSimple th {
+                    font-weight: bold;
+                }
+                table#datatablesSimple td:nth-child(1) { width: 3%; } /* No */
+                table#datatablesSimple td:nth-child(2) { width: 10%; } /* Tanggal Booking */
+                table#datatablesSimple td:nth-child(3) { width: 7%; } /* Jam Booking */
+                table#datatablesSimple td:nth-child(4) { width: 15%; } /* Catatan */
+                table#datatablesSimple td:nth-child(5) { width: 10%; } /* Jenis Mobil */
+                table#datatablesSimple td:nth-child(6) { width: 10%; } /* NoPlat Mobil */
+                table#datatablesSimple td:nth-child(7) { width: 10%; } /* Nama Pelanggan */
+                table#datatablesSimple td:nth-child(8) { width: 10%; } /* Layanan */
+                table#datatablesSimple td:nth-child(9) { width: 15%; } /* Action */
+            </style>
             <table id="datatablesSimple">
                 <thead>
                     <tr>
@@ -64,7 +82,9 @@
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="{{route('pemesanan.edit', $p->id)}}"
-                                class="btn btn-sm btn-warning">Edit</a>  
+                                class="btn btn-sm btn-warning">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>  
                        
                        
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">

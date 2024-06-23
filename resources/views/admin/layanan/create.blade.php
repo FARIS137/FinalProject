@@ -17,21 +17,11 @@
 enctype="multipart/form-data">
 @csrf
 <div class="form-group row">
-    <label for="jenis_layanan" class="col-4 col-form-label">Jenis Layanan</label>
-    <div class="col-8">
-      @foreach ($ar_layanan as $layanan)
-        <div class="custom-control custom-radio">
-          <input name="jenis_layanan" id="radio_0{{$layanan['lay']}}" type="radio"
-                 class="custom-control-input" value="{{$layanan['lay']}}"
-                 @if(old('jenis_layanan') === $layanan['lay']) checked @endif
-                 onchange="updateHarga('{{$layanan['lay']}}', {{ $layanan['harga'] }})">
-          <label for="radio_0{{$layanan['lay']}}" class="custom-control-label d-flex flex-column justify-content-end">
-            {{$layanan['lay']}}
-          </label>
-        </div>
-      @endforeach
-    </div>
+  <label for="jenis_layanan" class="col-4 col-form-label">Jenis Layanan</label>
+  <div class="col-8">
+    <input id="jenis_layana" name="jenis_layanan" type="text" class="form-control">
   </div>
+</div>
 
 <div class="form-group row">
   <label for="harga" class="col-4 col-form-label">Harga</label>
