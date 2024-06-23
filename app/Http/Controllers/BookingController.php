@@ -43,27 +43,20 @@ class BookingController extends Controller
     }
 
 
-    public function pembayaran(Request $request){
-        $id = $request->input("id");
-    
-        if(empty($id)){
-            return redirect("booking")->with(["error" => "Id Tidak Tersedia"]);
-        }
-    
-        $pemesanan = Pemesanan::with('layanan')->where('id', $id)->first();
-    
-        // Calculate additional cost for sport cars
+    public function showPembayaran($id)
+    {
+        $pemesanan = Pemesanan::with('layanan')->findOrFail($id);
+
+        // Logika untuk menghitung biaya tambahan jika mobil adalah mobil sport
         $additionalCost = 0;
-        if($pemesanan->jenis_mobil == "sport"){
-            $additionalCost = 30000;
+        if ($pemesanan->jenis_mobil === 'sport') {
+            $additionalCost = 30000; // Biaya tambahan untuk mobil sport
         }
     
-        // Calculate total price
-        $layananPrice = $pemesanan->layanan->harga;
-        $totalHarga = $layananPrice + $additionalCost;
+        // Hitung total harga
+        $totalHarga = $pemesanan->layanan->harga + $additionalCost;
     
+        // Tampilkan halaman pembayaran dengan data pemesanan
         return view('front.pembayaran', compact('pemesanan', 'additionalCost', 'totalHarga'));
     }
-    
-    
 }

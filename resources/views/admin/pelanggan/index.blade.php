@@ -2,7 +2,7 @@
 @section('konten')
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Pemesanan</h1>
+    <h1 class="mt-4">Pelanggan</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ url('admin') }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Tables</li>
@@ -73,16 +73,12 @@
                         <td>{{ $p->customer_name }}</td>
                         <td>{{ $p->layanan_id }}</td>
                         <td>
-                            <a href="{{asset("admin/periksa-foto-pembayaran?id=" . $p->id)}}"
-                                class="btn btn-sm btn-warning">
-                                periksa
-                            </a>  
-                            <a href="{{asset("admin/konfirmasi-pembayaran?id=" . $p->id)}}" 
+                            <a href="{{asset("admin/status-selesai?id=" . $p->id)}}" 
                                 class="btn btn-sm btn-success">
-                                konfirmasi
+                                selesai
                             </a>
                        
-                            <a href="{{asset('admin/hapus-transaksi?id=' . $p->id)}}" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
+                            <a href="{{asset('admin/hapus-pelanggan?id=' . $p->id)}}" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             
@@ -99,7 +95,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <form action="{{asset('admin/hapus-pemesanan')}}" method="get" style="display:inline;">
+                                            <form action="{{asset('admin/hapus-pelanggan')}}" method="get" style="display:inline;">
                                                 <input type="hidden" name="id" value="{{$p->id}}">
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>

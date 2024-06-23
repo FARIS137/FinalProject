@@ -126,7 +126,14 @@
 </div>
 <!-- About End -->
 
+
         </div>
     </div>
 </div>
+
+@if(session("bukti_pembayaran"))
+<script>
+    alert("Transaksi berhasil");
+</script>
+@endif
 @endsection

@@ -12,8 +12,22 @@ class PemesananController extends Controller
 {
     public function index()
     {
-        $pemesanan = Pemesanan::where("status", "1")->get();
+        $pemesanan = Pemesanan::where("status", "no-validasi")->get();
         return view('admin.pemesanan.index', compact('pemesanan'));
+    }
+
+    public function statusSelesai(Request $request){
+        $id = $request->id;
+
+        $data = [
+            "status" => "success"
+        ];
+
+        if(!Pemesanan::where("id", $id)->update($data)){
+            return redirect("admin/pemesanan")->with(["error" => "Gagal Konfirmasi"]);
+        }
+        
+        return redirect("admin/pemesanan")->with(["success" => "Berhasil Konfirmasi"]);
     }
     
     public function pembayaran(Request $request){
@@ -31,6 +45,7 @@ class PemesananController extends Controller
     public function data(Request $request){
                                                                                                                                                             
         $dataBaru = [
+            'id_user'              => Auth::id(),
             'tanggal_awal_booking' => $request->tanggal_awal_booking,
             'jam_awal_booking'     => $request->jam_awal_booking,
             'catatan'              => $request->catatan,
@@ -58,7 +73,7 @@ class PemesananController extends Controller
         if($dataBaru["jenis_mobil"] == "sport"){
             $totalHarga = $harga + 30000;
         } else if($dataBaru["jenis_mobil"] == "biasa"){
-            $totalHarga = $harga + 0;
+            $totalHarga = $harga;
         }
         $dataBaru["total_harga"] = $totalHarga;
         $pemesanan = Pemesanan::create($dataBaru);
@@ -75,12 +90,12 @@ class PemesananController extends Controller
 
             $dataBaru = [
                 "foto"   => $fileName,
-                "status" => "1"
+                "status" => "no-validasi"
             ];
             
             $pemesanan = Pemesanan::where("id", $id)->update($dataBaru);
 
-            return redirect("home")->with(["bukti_pembayaran" => "pembayaran berhasil"]);
+            return redirect("histori")->with(["bukti_pembayaran" => "pembayaran berhasil"]);
         } else {
             return redirect("konfirmasi?id=" . $id);
         }
@@ -105,11 +120,13 @@ class PemesananController extends Controller
     public function method(Request $request){
         $method = $request->method;
         $norek  = rand(1,100000000000000000);
+        $kode  = rand(1,100000000000000000);
         $id  = $request->id;
 
         $dataBaru = [
             "method" => $method,
-            "norek"  => $norek
+            "norek"  => $norek,
+            "kode"  => $kode,
         ];
         
         $pemesanan = Pemesanan::where("id", $id)->update($dataBaru);
@@ -117,10 +134,6 @@ class PemesananController extends Controller
         return redirect('/konfirmasi?id=' . $id);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
@@ -129,10 +142,7 @@ class PemesananController extends Controller
         $layanan = Layanan::all();
         return view('admin.pemesanan.create', compact('layanan', 'jenis_mobil'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         //
@@ -170,32 +180,22 @@ class PemesananController extends Controller
         $pemesanan->save();
         return redirect('admin/pemesanan');
     }
-
-    /**
-     * Display the specified resource.
-     */
+  
     public function show(string $id)
     {
         //
         $pemesanan = Pemesanan::find($id);
         return view('admin.pemesanan.detail', compact('pemesanan'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(string $id)
     {
-        //
         $layanan = Layanan::all();
         $ps = Pemesanan::find($id);
         $jenis_mobil = ['biasa', 'sport'];
         return view('admin.pemesanan.edit', compact('layanan', 'ps', 'jenis_mobil'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
@@ -227,10 +227,7 @@ class PemesananController extends Controller
         $pemesanan->save();
         return redirect('admin/pemesanan');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(string $id)
     {
         //
@@ -238,5 +235,85 @@ class PemesananController extends Controller
         $pemesanan->delete();
 
         return redirect('admin/pemesanan');
+    }
+
+    public function histori(){
+        $pemesanan = Pemesanan::where("id_user", Auth::id())->get();
+        return view('front.histori', compact('pemesanan'));
+    }
+
+    public function checkTransaksi(Request $request){
+        $id = $request->id;
+        $layanan = Layanan::all();
+        $ps = Pemesanan::find($id);
+        $jenis_mobil = ['biasa', 'sport'];
+
+        return view('admin.pemesanan.check', compact('layanan', 'ps', 'jenis_mobil'));
+    }
+
+    public function konfirmasiPembayaran(Request $request){
+        $id = $request->id;
+
+        $data = [
+            "status" => "validasi"
+        ];
+
+        if(!Pemesanan::where("id", $id)->update($data)){
+            return redirect("admin/pemesanan")->with(["error" => "Gagal Konfirmasi"]);
+        }
+        
+        return redirect("admin/pemesanan")->with(["success" => "Berhasil Konfirmasi"]);
+    }
+    public function dataPelanggan(){
+        $pemesanan = Pemesanan::where("status", "validasi")->get();
+        return view('admin.pelanggan.index', compact('pemesanan'));
+    }
+
+    public function printKupon(Request $request){
+        $id = $request->id;
+        $pemesanan = Pemesanan::find($id);
+         return view('front.kupon', compact('pemesanan'));
+    }
+
+    public function hapusTransaksi(Request $request){
+        $id = $request->id;
+        
+        $data = [
+            "status" => "failed"
+        ];
+
+        if(!Pemesanan::where("id", $id)->update($data)){
+            return redirect("admin/transaksi")->with(["error" => "Gagal hapus"]);
+        }
+        
+        return redirect("admin/transaksi")->with(["success" => "Berhasil hapus"]);
+    }
+
+    public function hapusPemesanan(Request $request){
+        $id = $request->id;
+        
+        $data = [
+            "status" => "failed"
+        ];
+
+        if(!Pemesanan::where("id", $id)->update($data)){
+            return redirect("admin/pemesanan")->with(["error" => "Gagal hapus"]);
+        }
+        
+        return redirect("admin/pemesanan")->with(["success" => "Berhasil hapus"]);
+    }
+
+    public function hapusPelanggan(Request $request){
+        $id = $request->id;
+        
+        $data = [
+            "status" => "failed"
+        ];
+
+        if(!Pemesanan::where("id", $id)->update($data)){
+            return redirect("admin/pelanggan")->with(["error" => "Gagal hapus"]);
+        }
+        
+        return redirect("admin/pelanggan")->with(["success" => "Berhasil hapus"]);
     }
 }

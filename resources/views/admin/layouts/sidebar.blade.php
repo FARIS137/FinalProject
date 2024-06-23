@@ -16,8 +16,8 @@
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{asset('admin.layanan.index')}}">Layanan </a>
-                            <a class="nav-link" href="{{asset('admin/transaksi')}}">Transaksi </a>
+                            <a class="nav-link" href="{{asset('admin/transaksi')}}">Riwayat Transaksi </a>
+                            <a class="nav-link" href="{{asset('admin/pelanggan')}}">Pelanggan </a>
                             <a class="nav-link" href="{{asset('admin/pengguna')}}">Users </a>
                             <a class="nav-link" href="{{asset('admin/pemesanan')}}">Pemesanan </a>
                         </nav>

@@ -33,6 +33,8 @@ Route::get('/contact', function () {
 Route::get('/profile', [UserController::class, 'showProfile']);
 Route::post('/profile/edit', [UserController::class, 'editProfile']);
 
+// ini histori
+Route::get('/histori', [PemesananController::class, 'histori']);
 Route::get('/transaksi', function () {
     return view('/front/transaksi');
 });
@@ -44,6 +46,7 @@ Route::post('/pembayaran',[PemesananController::class, 'data']);
 Route::get('/konfirmasi',  [PemesananController::class, 'konfirmasi']);
 Route::post('/post-method', [PemesananController::class, 'method']);
 Route::post('/post-bukti-pembayaran', [PemesananController::class, 'bukti_pembayaran']);
+Route::get('/print-kupon',  [PemesananController::class, 'printKupon']);
 
 Route::get('/booking', function () {
     if (Auth::check()) {
@@ -65,7 +68,17 @@ Route::group(['middleware' => ['auth', 'checkActive', 'role:admin|manager|staff'
        // ini transaksi
         Route::get('transaksi', [TransaksiController::class, 'index']);
         Route::resource('layanan', LayananController::class);
-        Route::resource('pemesanan', PemesananController::class);
+       
+        Route::get('pemesanan', [PemesananController::class, 'index']);
+        Route::get('periksa-foto-pembayaran', [PemesananController::class, 'checkTransaksi']);
+        Route::get('konfirmasi-pembayaran', [PemesananController::class, 'konfirmasiPembayaran']);
+
+        Route::get('pelanggan', [PemesananController::class, 'dataPelanggan']);
+        Route::get('status-selesai', [PemesananController::class, 'statusSelesai']);
+        Route::get('hapus-transaksi', [PemesananController::class, 'hapusTransaksi']);
+        Route::get('hapus-pemesanan', [PemesananController::class, 'hapusPemesanan']);
+        Route::get('hapus-pelanggan', [PemesananController::class, 'hapusPelanggan']);
+        
         Route::get('/user', [UserController::class, 'index']);
         Route::post('/user/{user}/activate', [UserController::class, 'activate'])->name('admin.user.activate');
         Route::get('/profile', [UserController::class, 'showProfileAdmin']);
