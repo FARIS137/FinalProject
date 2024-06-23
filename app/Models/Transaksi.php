@@ -9,9 +9,11 @@ class Transaksi extends Model
 {
     use HasFactory;
     protected $table = 'transaksi';
-    protected $fillable = ['tanggal_transaksi', 'metode_pembayaran', 'bukti_bayar' ,'total_biaya', 'pemesanan_id'];
+    protected $fillable = ['nama_lengkap,jam,tanggal', 'metode_pembayaran', 'bukti_bayar' 
+    ,'total_biaya', 'pemesanan_id','deskripsi'];
+    public $timestamps = false;
 
     public function pemesanan (){
-        return $this->haveMany(Pemesanan::class);
+        return $this->belongsTo(Pemesanan::class,'pemesanan_id');
     }
 }

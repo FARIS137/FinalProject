@@ -12,7 +12,7 @@ class pemesanan extends Model
     protected $table = 'pemesanan';
 
 
-    protected $fillable = ['tanggal_awal_booking', 'jam_awal_booking', 'catatan','jenis_mobil', 'noplat_mobil', 'layanan id','customer_name'];
+    protected $fillable = ['tanggal_awal_booking', 'jam_awal_booking', 'catatan','jenis_mobil', 'noplat_mobil', 'layanan_id','customer_name','foto', 'harga', 'total_harga', 'norek', 'status', 'method'];
     public $timestamps = false;
 
     public function layanan()

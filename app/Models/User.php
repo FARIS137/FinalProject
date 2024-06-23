@@ -18,10 +18,20 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'fullname',
         'email',
         'password',
+        'role',
+        'is_active',
+        'alamat',
+        'no_hp',
+        
     ];
-
+    public function role(string $role): bool
+    {
+        return $this->role === $role;
+        //untuk membandingkan dan menyamakan anatar 2 variable dan fungsi
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -43,5 +53,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function pengguna()
+    {
+        return $this->hasOne(Pengguna::class, 'user_id');
     }
 }
