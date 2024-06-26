@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
+
 Route::get('/', function () {
     return view('front.home');
 });
@@ -87,6 +88,9 @@ Route::group(['middleware' => ['auth', 'checkActive', 'role:admin|manager|staff'
         Route::post('/layanan/store', [LayananController::class, 'store']);
         Route::post('/pemesanan/store', [PemesananController::class, 'store']);
         Route::post('/pengguna/store', [PenggunaController::class, 'store']);
+
+        Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::post('/notifications/mark-as-read', [NotificationController::class, 'markAsRead']);
     });
 });
 Auth::routes();

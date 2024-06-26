@@ -6,12 +6,13 @@
         background-image: url('/front/assets/img/3d.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-position: center center;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
+        
     }
     .form-container {
         background: rgba(255, 255, 255, 0.5);
@@ -29,7 +30,7 @@
         padding: 1rem;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
-        margin: -2rem -2rem 1rem -2rem;
+         margin: -2rem -2rem 1rem -2rem;
     }
     .btn-primary {
         background-color: #007bff;

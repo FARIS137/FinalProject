@@ -4,9 +4,9 @@
 <style>
     body {
         background-image: url('/front/assets/img/3d.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-size: cover; 
+        background-repeat: no-repeat; /* Mencegah gambar mengulang */
+        background-position: center center;
         display: flex;
         justify-content: center;
         align-items: center;

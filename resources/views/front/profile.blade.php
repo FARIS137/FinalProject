@@ -74,6 +74,7 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/home" class="nav-item nav-link">Home</a>
                 <a href="/about" class="nav-item nav-link">About</a>
+                <a href="/histori" class="nav-item nav-link">Histori</a>
                 <a href="/service" class="nav-item nav-link">Layanan</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
                 @guest
